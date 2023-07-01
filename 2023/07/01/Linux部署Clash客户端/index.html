@@ -16,23 +16,24 @@
   <meta name="author" content="saotolls.china">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Ubuntu下的Docker安装">
+    <meta name="description" content="Clash Linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ubuntu安装Docker">
-<meta property="og:url" content="https://saotolls.github.io/2023/07/01/Ubuntu%E5%AE%89%E8%A3%85Docker/index.html">
+<meta property="og:title" content="Linux部署Clash客户端">
+<meta property="og:url" content="https://saotolls.github.io/2023/07/01/Linux%E9%83%A8%E7%BD%B2Clash%E5%AE%A2%E6%88%B7%E7%AB%AF/index.html">
 <meta property="og:site_name" content="saotolls">
-<meta property="og:description" content="Ubuntu下的Docker安装">
+<meta property="og:description" content="Clash Linux">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-07-01T12:05:21.000Z">
-<meta property="article:modified_time" content="2023-07-01T12:31:59.733Z">
+<meta property="article:published_time" content="2023-07-01T12:29:35.000Z">
+<meta property="article:modified_time" content="2023-07-01T12:34:02.901Z">
 <meta property="article:author" content="saotolls.china">
+<meta property="article:tag" content="VPN">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Ubuntu安装Docker - saotolls</title>
+  <title>Linux部署Clash客户端 - saotolls</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -198,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Ubuntu安装Docker"></span>
+            <span id="subtitle" data-typed-text="Linux部署Clash客户端"></span>
           
         </div>
 
@@ -209,7 +210,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-07-01 20:05" pubdate>
+        <time datetime="2023-07-01 20:29" pubdate>
           2023年7月1日 晚上
         </time>
       </span>
@@ -221,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          640 字
+          351 字
         
       </span>
     
@@ -232,7 +233,7 @@
         
         
         
-          6 分钟
+          3 分钟
         
       </span>
     
@@ -270,28 +271,29 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Ubuntu安装Docker</h1>
+            <h1 style="display: none">Linux部署Clash客户端</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="Ubuntu下安装Docker"><a href="#Ubuntu下安装Docker" class="headerlink" title="Ubuntu下安装Docker"></a>Ubuntu下安装Docker</h1><p>1、卸载可能存在的或者为安装成功的Docker版本</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">sudo apt-get remove docker docker-engine docker-ce docker.io<br></code></pre></td></tr></table></figure>
+                <h1 id="部署Clash客户端"><a href="#部署Clash客户端" class="headerlink" title="部署Clash客户端"></a>部署Clash客户端</h1><p>1、下载ClashForWindows Linux版本文件</p>
+<p>下载地址：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">https://github.com/Dreamacro/clash/releases<br></code></pre></td></tr></table></figure>
 
-<p>2、添加阿里云的GPG秘钥</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">curl -fsSL http://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add <br></code></pre></td></tr></table></figure>
 
-<p>3、设置存储库</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">sudo add-apt-repository &quot;deb [arch=amd64] http://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable&quot;<br></code></pre></td></tr></table></figure>
 
-<p>4、安装最新版本的Docker（速度很快）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plain">sudo apt-get update<br>sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin<br></code></pre></td></tr></table></figure>
+<p>2、使用FTP工具将下载好的文件上传到指定需要部署的服务器</p>
+<p>3、解压上传后的文件</p>
+<p>4、赋予clash二进制文件执行权限</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">chmod + x clash<br></code></pre></td></tr></table></figure>
 
-<p>5、验证Docker是否成功安装</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plain">-- 查看Docker版本<br>docker version<br></code></pre></td></tr></table></figure>
+<p>5、启用文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">./clash<br></code></pre></td></tr></table></figure>
 
-<p>6、Docker服务基本操作</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs plain">-- 启动Docker服务<br>	sudo systemctl start docker<br>-- 查看Docker服务状态<br>	sudo systemctl status docker<br>-- 停止Docker服务<br>	sudo systemctl stop docker<br>-- 重启Docker服务<br>	sudo systemctl restart docker<br></code></pre></td></tr></table></figure>
+<p>此时会在用户目录下自动生成两个文件 config.yaml 和 Country.mmdb，并在该路径下生成 Config.yaml 和Country.mmdb两个文件。生成的Config.yaml文件为空，需要后续填写自己的代理信息。</p>
+<p>默认生成路径：<code>/root/.config/clash</code></p>
+<p>Config.yaml：就是节点的配置文件</p>
+<p>Country.mmdb：城市代理数据文件</p>
 
                 
               </div>
@@ -325,6 +327,8 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
+        <a href="/tags/VPN/">#VPN</a>
+      
         <a href="/tags/Linux/">#Linux</a>
       
         <a href="/tags/%E7%AC%94%E8%AE%B0/">#笔记</a>
@@ -339,8 +343,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Ubuntu安装Docker</div>
-      <div>https://saotolls.github.io/2023/07/01/Ubuntu安装Docker/</div>
+      <div>Linux部署Clash客户端</div>
+      <div>https://saotolls.github.io/2023/07/01/Linux部署Clash客户端/</div>
     </div>
     <div class="license-meta">
       
@@ -396,18 +400,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/07/01/%E5%B8%B8%E8%A7%81Docker%E6%9C%8D%E5%8A%A1%E7%9A%84%E9%83%A8%E7%BD%B2%E5%AE%89%E8%A3%85/" title="常见Docker服务的部署安装">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">常见Docker服务的部署安装</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/03/22/Windows%E4%BD%BF%E7%94%A8ClashForWindows/" title="Windows使用ClashForWindows">
-                        <span class="hidden-mobile">Windows使用ClashForWindows</span>
+                      <a href="/2023/07/01/%E5%B8%B8%E8%A7%81Docker%E6%9C%8D%E5%8A%A1%E7%9A%84%E9%83%A8%E7%BD%B2%E5%AE%89%E8%A3%85/" title="常见Docker服务的部署安装">
+                        <span class="hidden-mobile">常见Docker服务的部署安装</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
