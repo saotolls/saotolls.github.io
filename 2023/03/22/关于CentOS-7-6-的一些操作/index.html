@@ -1,0 +1,1477 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="saotolls.china">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="CentOS 7.6 常见操作、服务部署及简单配置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于CentOS 7.6 的一些操作（持续不定时更新中）">
+<meta property="og:url" content="https://saotolls.github.io/2023/03/22/%E5%85%B3%E4%BA%8ECentOS-7-6-%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C/index.html">
+<meta property="og:site_name" content="saotolls">
+<meta property="og:description" content="CentOS 7.6 常见操作、服务部署及简单配置">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://saotolls.github.io/2023/03/22/%E5%85%B3%E4%BA%8ECentOS-7-6-%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C/1633145707522-2e31d06e-feaf-49f9-b7b7-8473c9e580da-16794276879293.png">
+<meta property="og:image" content="https://saotolls.github.io/2023/03/22/%E5%85%B3%E4%BA%8ECentOS-7-6-%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C/1633145788597-54f1db72-2d8a-4fc6-97f7-9f4ebffa4584.png">
+<meta property="og:image" content="https://saotolls.github.io/2023/03/22/%E5%85%B3%E4%BA%8ECentOS-7-6-%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C/1655686967355-a44fed7c-a785-4e58-a820-9c80c91b7fb8.png">
+<meta property="og:image" content="https://saotolls.github.io/2023/03/22/%E5%85%B3%E4%BA%8ECentOS-7-6-%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C/1655687427960-abf06712-76ed-4ff3-869c-305cb1649ecd.png">
+<meta property="og:image" content="https://saotolls.github.io/2023/03/22/%E5%85%B3%E4%BA%8ECentOS-7-6-%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C/1638867197103-6c8657af-97e2-469f-acd7-74f2e011c8c0.png">
+<meta property="og:image" content="https://saotolls.github.io/2023/03/22/%E5%85%B3%E4%BA%8ECentOS-7-6-%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C/1640310677304-ba4e0398-b9c4-4f5a-8c07-031f19380ebf.png">
+<meta property="og:image" content="https://saotolls.github.io/2023/03/22/%E5%85%B3%E4%BA%8ECentOS-7-6-%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C/1640314094567-b44e4263-6720-47ea-a278-e6e60aa66206.png">
+<meta property="og:image" content="https://saotolls.github.io/2023/03/22/%E5%85%B3%E4%BA%8ECentOS-7-6-%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C/1640314133569-ac7bdc32-757a-4d85-a648-684f3a9aeef0.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2021/png/21909148/1640314221424-69d30621-c942-447a-8c7f-d99cf6906078.png">
+<meta property="article:published_time" content="2023-03-21T18:28:49.000Z">
+<meta property="article:modified_time" content="2023-03-21T20:09:09.210Z">
+<meta property="article:author" content="saotolls.china">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="笔记">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://saotolls.github.io/2023/03/22/%E5%85%B3%E4%BA%8ECentOS-7-6-%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C/1633145707522-2e31d06e-feaf-49f9-b7b7-8473c9e580da-16794276879293.png">
+  
+  
+  
+  <title>关于CentOS 7.6 的一些操作（持续不定时更新中） - saotolls</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"saotolls.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>saotolls</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="关于CentOS 7.6 的一些操作（持续不定时更新中）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-03-22 02:28" pubdate>
+          2023年3月22日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          46k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          385 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">关于CentOS 7.6 的一些操作（持续不定时更新中）</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="1-YUM命令"><a href="#1-YUM命令" class="headerlink" title="1. YUM命令"></a>1. YUM命令</h1><blockquote>
+<p>yum（ Yellow dog Updater, Modified）是一个在 Fedora 和 RedHat 以及 SUSE 中的 Shell 前端软件包管理器。</p>
+</blockquote>
+<blockquote>
+<p>基于 RPM 包管理，能够从指定的服务器自动下载 RPM 包并且安装，可以自动处理依赖性关系，并且一次安装所有依赖的软件包，无须繁琐地一次次下载、安装。</p>
+</blockquote>
+<blockquote>
+<p>yum 提供了查找、安装、删除某一个、一组甚至全部软件包的命令，而且命令简洁而又好记。</p>
+</blockquote>
+<h2 id="1-1-YUM语法"><a href="#1-1-YUM语法" class="headerlink" title="1.1 YUM语法"></a>1.1 YUM语法</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum [options] [<span class="hljs-built_in">command</span>] [packages ...]<br></code></pre></td></tr></table></figure>
+
+<p><strong>options :</strong> 可选, 选项包括 -h(帮助), -y(当安装过程提示选择全部为”yes”), -q(不显示安装的过程)等等.</p>
+<p><strong>command</strong> : 要进行的操作</p>
+<p><strong>package</strong> : 安装的包名</p>
+<h2 id="1-2-常用命令"><a href="#1-2-常用命令" class="headerlink" title="1.2 常用命令"></a>1.2 常用命令</h2><ol>
+<li><p>列出所有可更新的软件清单命令:  <code>yum check-update</code></p>
+</li>
+<li><p>更新所有软件命令: <code>yum update</code></p>
+</li>
+<li><p>仅安装指定的软件命令: <code>yum install &lt;package name&gt;</code></p>
+</li>
+<li><p>仅更新指定的软件命令: <code>yum update &lt;package name&gt;</code></p>
+</li>
+<li><p>列出所有可安装的软件清单命令: <code>yum list</code></p>
+</li>
+<li><p>删除软件包命令: <code>yum remove &lt;package name&gt;</code></p>
+</li>
+<li><p>查找软件包命令: <code>yum search &lt;keyword&gt;</code></p>
+</li>
+<li><p>清除缓存命令</p>
+</li>
+</ol>
+<p><code>yum clean packages</code> : 清除缓存目录下的软件包</p>
+<p><code>yum clean headers</code> : 清除缓存目录下的headers</p>
+<p><code>yum clear oldheaders</code> : 清除缓存目录下的旧headers</p>
+<p><code>yum clean, yum clean alln (= yum clean packages; yum clean oldheaders)</code> : 清除缓存目录下的软件包以及旧的headers</p>
+<h1 id="2-基本命令"><a href="#2-基本命令" class="headerlink" title="2. 基本命令"></a>2. 基本命令</h1><h2 id="2-1-提升资源权限"><a href="#2-1-提升资源权限" class="headerlink" title="2.1 提升资源权限"></a>2.1 提升资源权限</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">chmod</span> a+x<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-2-以后台服务运行jar包"><a href="#2-2-以后台服务运行jar包" class="headerlink" title="2.2 以后台服务运行jar包"></a>2.2 以后台服务运行jar包</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">nohup</span> java -jar xxxx.jar &gt; log.file  2&gt;&amp;1 &amp;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-3-修改jar包运行时的服务端口号"><a href="#2-3-修改jar包运行时的服务端口号" class="headerlink" title="2.3 修改jar包运行时的服务端口号"></a>2.3 修改jar包运行时的服务端口号</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">--server.port=xxxx<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-4-查看进程占用资源情况"><a href="#2-4-查看进程占用资源情况" class="headerlink" title="2.4 查看进程占用资源情况"></a>2.4 查看进程占用资源情况</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ps -e -o <span class="hljs-string">&#x27;pid,comm,args,pcpu,rsz,vsz,stime,user,uid&#x27;</span> | grep java<br></code></pre></td></tr></table></figure>
+
+<h2 id="2-5-权限"><a href="#2-5-权限" class="headerlink" title="2.5 权限"></a>2.5 权限</h2><ul>
+<li>修改文件/文件夹权限<br>语法: <code>chmod [*options*] *mode*[,*mode*] *file1* [*file2* ...]</code></li>
+<li>修改文件所属用户组<br><code>chown</code></li>
+</ul>
+<h1 id="3-安装GitLab"><a href="#3-安装GitLab" class="headerlink" title="3. 安装GitLab"></a>3. 安装GitLab</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">1.安装依赖软件<br>	yum -y install policycoreutils openssh-server openssh-clients postfix<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plain">2.设置postfix开机自启，并启动，postfix支持gitlab发信功能<br>　　systemctl enable postfix &amp;&amp; systemctl start postfix<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plain">3.下载gitlab安装包，然后安装<br>　　gitlab的下载地址：https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7/<br><br>　　rpm -ivh gitlab-ce-8.0.0-ce.0.el7.x86_64.rpm<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plain">4.修改gitlab配置文件指定服务器ip和自定义端口      --&gt;更改gitlab默认端口<br>　　vim  /etc/gitlab/gitlab.rb <br>　　修改内容：external_url   后改为自己的http://ip:端口  ;    unicorn[&#x27;port&#x27;] = 28080  修改 unicorn[&#x27;port&#x27;] 端口     <br>　　！注意，两个端口不能一样<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plain"> 5：使用gitlab-ctl reconfigure 自动配置，并安装数据库，初始化信息，如下所示(第一次使用配置时间较长)：<br>命令：gitlab-ctl reconfigure<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plain"> 6：使用gitlab-ctl start 启动gitlab服务。<br>命令：gitlab-ctl start <br> sudo gitlab-ctl stop --停止服务<br> sudo gitlab-ctl reconfigure --启动服务<br> sudo gitlab-ctl start --启动所有gitlab组件<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">7：在浏览器中输入 http://ip:端口/ ，然后 change password: ，并使用root用户登录 即可 (后续动作根据提示操作)<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="4-防火墙-firewalld"><a href="#4-防火墙-firewalld" class="headerlink" title="4. 防火墙(firewalld)"></a>4. 防火墙(firewalld)</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs plain">1. 运行命令：<br>  firewall-cmd --get-active-zones<br>  运行完成之后，可以看到zone名称，如下：<br><br>2. 执行如下命令命令：<br>	firewall-cmd --zone=public --add-port=8012/tcp --permanent<br><br>3. 重启防火墙，运行命令：<br>	firewall-cmd --reload<br><br>4. 查看端口号是否开启，运行命令：<br>	firewall-cmd --query-port=6379/tcp<br>  <br>5. 删除已放行的短裤，运行命令：<br>	firewall-cmd --zone=public --remove-port=80/tcp --permanent<br><br>6. 查看防火墙开启状态，运行命令：<br>	systemctl status firewalld<br><br>7. 停止防火墙，运行命令：<br>	systemctl stop firewalld<br> <br>8. 开启防火墙，运行命令：<br>	systemctl start firewalld<br><br>9. 重新启动防火墙，运行命令：<br>	systemctl restart firewalld<br>  <br>10. 查看已放行的端口列表<br>	firewall-cmd  --zone=public --list-ports<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="5-Docker容器"><a href="#5-Docker容器" class="headerlink" title="5. Docker容器"></a>5. Docker容器</h1><h2 id="5-1-Docker安装"><a href="#5-1-Docker安装" class="headerlink" title="5.1 Docker安装"></a>5.1 Docker安装</h2><h3 id="5-1-1-删除已有的docker服务"><a href="#5-1-1-删除已有的docker服务" class="headerlink" title="5.1.1. 删除已有的docker服务"></a>5.1.1. 删除已有的docker服务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum remove docker \                  <br>     docker-client \                  <br>     docker-client-latest \                  <br>     docker-common \                  <br>     docker-latest \                  <br>     docker-latest-logrotate \                  <br>     docker-logrotate \                  <br>     docker-engine<br></code></pre></td></tr></table></figure>
+
+<h3 id="5-1-2-安装所需依赖"><a href="#5-1-2-安装所需依赖" class="headerlink" title="5.1.2. 安装所需依赖"></a>5.1.2. 安装所需依赖</h3><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">yum <span class="hljs-keyword">install</span> -y yum-utils<br></code></pre></td></tr></table></figure>
+
+<h3 id="5-1-3-配置yum源"><a href="#5-1-3-配置yum源" class="headerlink" title="5.1.3. 配置yum源"></a>5.1.3. 配置yum源</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo yum-config-manager \    	<br>						--add-repo \    	<br>            https://download.docker.com/linux/centos/docker-ce.repo<br></code></pre></td></tr></table></figure>
+
+<h3 id="5-1-4-安装最新版Docker"><a href="#5-1-4-安装最新版Docker" class="headerlink" title="5.1.4. 安装最新版Docker"></a>5.1.4. 安装最新版Docker</h3><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim">yum install docker-<span class="hljs-keyword">ce</span> docker-<span class="hljs-keyword">ce</span>-cli containerd.io<br></code></pre></td></tr></table></figure>
+
+<h3 id="5-1-5-Docker服务命令"><a href="#5-1-5-Docker服务命令" class="headerlink" title="5.1.5 Docker服务命令"></a>5.1.5 Docker服务命令</h3><ul>
+<li>启动: <code>systemctl start docker</code>  </li>
+<li>停止: <code>systemctl stop docker</code>  </li>
+<li>重启: <code>systemctl restart docker</code> </li>
+<li>查看镜像: <code>docker images</code></li>
+<li>查看已经启动的容器: <code>docker ps</code></li>
+<li>查看所有容器,包含未启动:<code> docker ps -a</code></li>
+<li>一键启动所有容器: <code>docker start $(docker ps -aq)</code></li>
+<li>进入容器: <code>docker exec -it [容器ID]</code></li>
+<li>停止容器: <code>docker stop [容器ID]</code></li>
+<li>一键停止所有容器: <code>docker stop $(docker ps -aq)</code></li>
+<li>一键删除所有容器(前提, 全部容器都已经停止): <code>docker rm $(docker ps -aq)</code></li>
+<li>进入指定容器: <code>docker exec -it [容器ID] /bin/bash</code></li>
+</ul>
+<h3 id="5-1-6-配置Docker国内镜像源"><a href="#5-1-6-配置Docker国内镜像源" class="headerlink" title="5.1.6. 配置Docker国内镜像源"></a>5.1.6. 配置Docker国内镜像源</h3><ul>
+<li><p>镜像地址</p>
+</li>
+<li><ul>
+<li>阿里云   <a target="_blank" rel="noopener" href="https://registry.cn-hangzhou.aliyuncs.com/">https://registry.cn-hangzhou.aliyuncs.com</a>  </li>
+<li>腾讯云   <a target="_blank" rel="noopener" href="https://mirror.ccs.tencentyun.com/">https://mirror.ccs.tencentyun.com</a>  </li>
+<li>华为云   <a target="_blank" rel="noopener" href="https://05f073ad3c0010ea0f4bc00b7105ec20.mirror.swr.myhuaweicloud.com/">https://05f073ad3c0010ea0f4bc00b7105ec20.mirror.swr.myhuaweicloud.com</a>  </li>
+<li>Docker中国   <a target="_blank" rel="noopener" href="https://registry.docker-cn.com/">https://registry.docker-cn.com</a>  </li>
+<li>网易   <a target="_blank" rel="noopener" href="http://hub-mirror.c.163.com/">http://hub-mirror.c.163.com</a>  </li>
+<li>daocloud   <a target="_blank" rel="noopener" href="http://f1361db2.m.daocloud.io/">http://f1361db2.m.daocloud.io</a> </li>
+</ul>
+</li>
+<li><p>修改步骤</p>
+</li>
+<li><ul>
+<li>\1. 直接修改 /etc/docker/daemon.json (docker 版本 &gt;= 1.10 时) 内容为:<br><code>&#123;&quot;registry-mirrors&quot;: [&quot;https://registry.cn-hangzhou.aliyuncs.com&quot;]&#125; </code></li>
+<li>\2. 修改后重启服务<br><code>systemctl daemon-reload``systemctl restart docker</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="5-2-使用-tomcat-镜像"><a href="#5-2-使用-tomcat-镜像" class="headerlink" title="5.2 使用 tomcat 镜像"></a>5.2 使用 tomcat 镜像</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">运行容器	<span class="hljs-comment"># docker run --name tomcat -p 8080:8080 -v $PWD/test:/usr/local/tomcat/webapps/test -d tomcat  </span><br><br>命令说明：    <br>		-p 8080:8080：将主机的 8080 端口映射到容器的 8080 端口。    <br>    -v <span class="hljs-variable">$PWD</span>/test:/usr/local/tomcat/webapps/test：将主机中当前目录下的 <span class="hljs-built_in">test</span> 挂载到容器的 /test。<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="5-3-Docker-镜像导入导出"><a href="#5-3-Docker-镜像导入导出" class="headerlink" title="5.3 Docker 镜像导入导出"></a>5.3 Docker 镜像导入导出</h2><h3 id="5-3-1-导出-入-镜像"><a href="#5-3-1-导出-入-镜像" class="headerlink" title="5.3.1 导出/入 镜像"></a>5.3.1 导出/入 镜像</h3><p><strong>导出：将docker 镜像导出成文件</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker save -o [image ID/name] xxx.tar.gz<br></code></pre></td></tr></table></figure>
+
+<p>导出后， 会在命令参数指定的目录下生成对应的压缩文件，如果没有指定目录，则在执行<code>docker save</code>命令的路径下生成文件。</p>
+<p>导出后的文件，可以在其他机器上通过加载镜像文件的方式进行导入加载。</p>
+<p>导出时，强烈建议使用<code>docker save -o 镜像名称:版本号 xxx.tar.gz</code>的方式</p>
+<p>导出时，如果使用<code>docker save -o [ImageID] xxx.tar.gz</code>的方式导出，导入时会出现镜像的名称和版本号都为none的情况</p>
+<p><strong>导入：将离线的docker镜像文件导入到docker服务中</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker load &lt; xxxx.tar.gz<br></code></pre></td></tr></table></figure>
+
+<p>导入后，系统会随机生成imageID</p>
+<h3 id="5-3-2-导出-入-容器"><a href="#5-3-2-导出-入-容器" class="headerlink" title="5.3.2 导出/入 容器"></a>5.3.2 导出/入 容器</h3><p><strong>导出：将docker运行的容器导出成文件</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker <span class="hljs-built_in">export</span> [ImageID/name:target] &gt; xxx.tar.gz<br></code></pre></td></tr></table></figure>
+
+<p>导出时，和save方式导出镜像一样，推荐使用<code>imageID</code>的方式导出，否则导入时可能会出现导入后的镜像的<code>镜像名称</code>和<code>版本号</code>都是<code>&lt;none&gt;</code>的情况。</p>
+<p><strong>导入：将离线的docker镜像文件导入到docker服务中</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker import xxxx.tar.gz &lt;IMAGE NAME&gt;:&lt;IMAGE TAG&gt;<br></code></pre></td></tr></table></figure>
+
+
+
+<p><strong>Tips：</strong></p>
+<ul>
+<li><p><strong>导入和导出两组命令必须成对使用</strong></p>
+</li>
+<li><ul>
+<li>导出时使用 <code>save</code>，导入时就需要使用<code>load</code></li>
+<li>导出时使用<code>export</code>，导入时就需要使用<code>import</code></li>
+</ul>
+</li>
+<li><p>导出时使用<code>imageID</code>为指向标记导出，避免出现导入后<code>ImageID</code>和<code>target</code>为<code>none</code>的情况</p>
+</li>
+</ul>
+<h2 id="5-4-Docker离线方式安装（二进制源码方式安装）"><a href="#5-4-Docker离线方式安装（二进制源码方式安装）" class="headerlink" title="5.4 Docker离线方式安装（二进制源码方式安装）"></a>5.4 Docker离线方式安装（二进制源码方式安装）</h2><p>下载docker离线二进制文件</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">https:<span class="hljs-regexp">//</span>download.docker.com<span class="hljs-regexp">/linux/</span>static<span class="hljs-regexp">/stable/</span>x86_64/<br></code></pre></td></tr></table></figure>
+
+<p>下载后通过FTP传输到服务器后，解压</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">tar xzvf docker-xx.xx.x.tgz<br></code></pre></td></tr></table></figure>
+
+<p>将解压后的docker下的所有文件移动或拷贝到 <code>/usr/bin</code>下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> docker/<br><span class="hljs-built_in">mv</span> * /usr/bin<br></code></pre></td></tr></table></figure>
+
+<p>新建docker.service文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">touch</span>  /etc/systemd/system/docker.service<br></code></pre></td></tr></table></figure>
+
+<p>编辑docker.service文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">vi  /etc/systemd/system/docker.service<br></code></pre></td></tr></table></figure>
+
+<p>在docker.service文件中填入如下内容</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-attr">[Unit]</span><br><span class="hljs-attr">Description</span>=<span class="hljs-string">Docker Application Container Engine</span><br><span class="hljs-attr">Documentation</span>=<span class="hljs-string">https://docs.docker.com</span><br><span class="hljs-attr">After</span>=<span class="hljs-string">network-online.target firewalld.service</span><br><span class="hljs-attr">Wants</span>=<span class="hljs-string">network-online.target</span><br><br><span class="hljs-attr">[Service]</span><br><span class="hljs-attr">Type</span>=<span class="hljs-string">notify</span><br><span class="hljs-attr">ExecStart</span>=<span class="hljs-string">/usr/bin/dockerd</span><br><span class="hljs-attr">ExecReload</span>=<span class="hljs-string">/bin/kill -s HUP $MAINPID</span><br><span class="hljs-attr">LimitNOFILE</span>=<span class="hljs-string">infinity</span><br><span class="hljs-attr">LimitNPROC</span>=<span class="hljs-string">infinity</span><br><span class="hljs-attr">TimeoutStartSec</span>=<span class="hljs-string">0</span><br><span class="hljs-attr">Delegate</span>=<span class="hljs-string">yes</span><br><span class="hljs-attr">KillMode</span>=<span class="hljs-string">process</span><br><span class="hljs-attr">Restart</span>=<span class="hljs-string">on-failure</span><br><span class="hljs-attr">StartLimitBurst</span>=<span class="hljs-string">3</span><br><span class="hljs-attr">StartLimitInterval</span>=<span class="hljs-string">60s</span><br><br><span class="hljs-attr">[Install]</span><br><span class="hljs-attr">WantedBy</span>=<span class="hljs-string">multi-user.targe</span><br></code></pre></td></tr></table></figure>
+
+<p>赋予docker.service可执行权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">chmod</span> +x /etc/systemd/system/docker.service<br>systemctl daemon-reload <br></code></pre></td></tr></table></figure>
+
+<p>[可选]将docker.service加入开机启动项</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">systemctl <span class="hljs-built_in">enable</span> docker.service<br><br><span class="hljs-comment"># 如果报错，可以使用将 systemctl start docker 命令加入到 &#x27;/etc/rc.d/rc.load&#x27;文件中，并赋予该文件可执行权限 [自定义启动项方式]</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="6-natapp端口映射工具"><a href="#6-natapp端口映射工具" class="headerlink" title="6. natapp端口映射工具"></a>6. natapp端口映射工具</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">以前台运行	./natapp -authtoken=7cc9d2d7c758b320以后台运行	nohup ./natapp -authtoken=8679cddfaea0f1fa -log=stdout &amp;<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="7-安装JDK"><a href="#7-安装JDK" class="headerlink" title="7. 安装JDK"></a>7. 安装JDK</h1><h2 id="7-1-方式一-手动二进制包安装"><a href="#7-1-方式一-手动二进制包安装" class="headerlink" title="7.1 方式一 (手动二进制包安装)"></a>7.1 方式一 (手动二进制包安装)</h2><p>​    官网下载地址: <a target="_blank" rel="noopener" href="https://www.oracle.com/technetwork/java/javase">https://www.oracle.com/technetwork/java/javase</a>  </p>
+<h3 id="7-1-1-切换到jdk目录"><a href="#7-1-1-切换到jdk目录" class="headerlink" title="7.1.1 切换到jdk目录"></a>7.1.1 切换到jdk目录</h3><p>​    切换命令是  <code>cd 目录名</code></p>
+<h3 id="7-1-2-解压jdk安装包"><a href="#7-1-2-解压jdk安装包" class="headerlink" title="7.1.2 解压jdk安装包"></a>7.1.2 解压jdk安装包</h3><p>​    解压命令:  <code>tar zxvf jdk-8u181-linux-x64.tar.gz</code></p>
+<h3 id="7-1-3-配置环境变量"><a href="#7-1-3-配置环境变量" class="headerlink" title="7.1.3 配置环境变量"></a>7.1.3 配置环境变量</h3><p>​    输入命令: <code>vim /etc/profile</code></p>
+<h3 id="7-1-4-然后依次操作如下步骤"><a href="#7-1-4-然后依次操作如下步骤" class="headerlink" title="7.1.4 然后依次操作如下步骤"></a>7.1.4 然后依次操作如下步骤</h3><ul>
+<li>按键盘 <strong>shift+g</strong>   </li>
+<li>按键盘 <strong>o</strong> 字母   </li>
+<li>配置环境,将如下代码复制进去,复制成功, 在linux中鼠标右键即可粘贴</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java">export JAVA_HOME=/opt/jdk/jdk1<span class="hljs-number">.8</span><span class="hljs-number">.0_171</span><br>export JRE_HOME=$&#123;JAVA_HOME&#125;/jre<br>export CLASSPATH=.:$&#123;JAVA_HOME&#125;/lib:$&#123;JRE_HOME&#125;/lib<br>export PATH=$&#123;JAVA_HOME&#125;/bin:$PATH<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>按键盘的Esc键, 在键盘左上角   </li>
+<li>输入命令保存退出    <code>:wq </code>  </li>
+<li>输入命令使配置文件生效   <code>source /etc/profile</code></li>
+<li>查看JKD是否配置成功  命令 <code>java -version</code> (看到版本就是成功了)  </li>
+</ul>
+<h2 id="7-2-方式二-使用yum进行安装，不推荐"><a href="#7-2-方式二-使用yum进行安装，不推荐" class="headerlink" title="7.2 方式二 (使用yum进行安装，不推荐)"></a>7.2 方式二 (使用yum进行安装，不推荐)</h2><ul>
+<li>执行如下命令查看可安装的jdk版本 <code> yum -y list Java*</code></li>
+<li>根据需要选择安装的jdk版本,这里安装jdk1.8  执行如下命令, 然后等待安装完成  <code>yum install -y java-1.8.0-openjdk-devel.x86_64</code>  </li>
+<li>安装完毕后执行如下命令查看版本  <code>java -version</code></li>
+<li>使用yum安装后 jdk目录位置  <code>usr/lib/jvm</code>    </li>
+<li>配置环境变量  切换到安装目录  <code>cd /usr/lib/jvm</code>  </li>
+<li>然后配置步骤和手动安装的配置步骤是一样的</li>
+</ul>
+<h1 id="8-安装Redis"><a href="#8-安装Redis" class="headerlink" title="8. 安装Redis"></a>8. 安装Redis</h1><h2 id="8-1-二进制方式安装"><a href="#8-1-二进制方式安装" class="headerlink" title="8.1 二进制方式安装"></a>8.1 二进制方式安装</h2><ol>
+<li>安装编译源文件时所需的编译环境</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum -y install cpp binutils glibc glibc-kernheaders glibc-common glibc-devel gcc make<br><span class="hljs-comment">#升级gcc</span><br>yum -y install centos-release-scl<br>yum -y install devtoolset-9-gcc devtoolset-9-gcc-c++ devtoolset-9-binutils<br>scl <span class="hljs-built_in">enable</span> devtoolset-9 bash<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>下载Redis二进制包文件</li>
+</ol>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs markdown">wget https://download.redis.io/releases/redis-6.0.9.tar.gz<br><br><span class="hljs-section"># 如果wget时报错, 说没有此命令, 就说明系统中没有安装wget</span><br><span class="hljs-section"># 使用 yum install wget -y 安装wget</span><br><span class="hljs-section"># 安装wget后, 重新wget redis的二进制源文件.</span><br><span class="hljs-section"># 也可在本地电脑上下载后, 使用FTP上传到服务器</span><br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>解压</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">tar -zxf redis-6.0.9.tar.gz<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>进入解压后的目录</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> redis-6.0.9.tar.gz<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>编译</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">make<br><span class="hljs-comment"># 编译二进制源文件时, 如果提示缺少编译所需的环境, 根据相应的提示安装对应的环境即可.</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="8-2-yum方式安装"><a href="#8-2-yum方式安装" class="headerlink" title="8.2 yum方式安装"></a>8.2 yum方式安装</h2><ol>
+<li>安装EPEL插件包</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum install epel-release -y<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>使用yum命令安装redis</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum install redis -y<br></code></pre></td></tr></table></figure>
+
+<h2 id="8-3-Redis常用指令"><a href="#8-3-Redis常用指令" class="headerlink" title="8.3 Redis常用指令"></a>8.3 Redis常用指令</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-section"># 启动服务</span><br>systemctl start redis.service<br><span class="hljs-section"># 停止服务</span><br>systemctl stop redis.service<br><span class="hljs-section"># 重启服务</span><br>systemctl restart redis.service<br><span class="hljs-section"># 查看服务启动状态</span><br>systemctl status redis.service<br><span class="hljs-section"># 开启开机自启</span><br>systemctl enable redis.service<br><span class="hljs-section"># 关闭开机自启</span><br>systemctl disable redis.service<br></code></pre></td></tr></table></figure>
+
+<h2 id="8-4-配置文件常用修改"><a href="#8-4-配置文件常用修改" class="headerlink" title="8.4 配置文件常用修改"></a>8.4 配置文件常用修改</h2><p>etc/redis.conf</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-comment"># 配置监听所有网段,ip. 默认只监听本机回环, 也可配置成服务器对应的ip地址</span><br><span class="hljs-attr">bind</span> <span class="hljs-string">127.0.0.1 ==修改为==&gt; bind 0.0.0.0</span><br><span class="hljs-comment"></span><br><span class="hljs-comment"># 配置启动方式以后台方式启动, 默认以前台方式启动</span><br><span class="hljs-attr">daemonize</span> <span class="hljs-string">no ==修改为==&gt; daemonize yes</span><br><span class="hljs-comment"></span><br><span class="hljs-comment"># 配置redis访问密码, 默认无密码</span><br><span class="hljs-attr">requirepass</span>	<span class="hljs-string">密码</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="9-安装Nginx"><a href="#9-安装Nginx" class="headerlink" title="9. 安装Nginx"></a>9. 安装Nginx</h1><p>Ngxin启动后会有两个PID[进程], 一个是Master, 另一个是Worker.</p>
+<p>Master:</p>
+<p>Worker:</p>
+<h2 id="9-1-安装-pcre-依赖"><a href="#9-1-安装-pcre-依赖" class="headerlink" title="9.1. 安装 pcre 依赖"></a>9.1. 安装 pcre 依赖</h2><ul>
+<li>下载pcre  </li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">wget http://downloads.sourceforge.net/project/pcre/pcre/8.37/pcre-8.37.tar.gz<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>解压</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">tar -zxvf pcre-8.37.tar.gz<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>编译 安装</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">./configure	make	make install<br></code></pre></td></tr></table></figure>
+
+<h2 id="9-2-安装openssl-zlib-gcc"><a href="#9-2-安装openssl-zlib-gcc" class="headerlink" title="9.2 安装openssl  zlib  gcc"></a>9.2 安装openssl  zlib  gcc</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum -y install make zlib zlib-devel gcc-c++ libtool openssl openssl-devel<br></code></pre></td></tr></table></figure>
+
+<h2 id="9-3-安装-Nginx"><a href="#9-3-安装-Nginx" class="headerlink" title="9.3 安装 Nginx"></a>9.3 安装 Nginx</h2><ul>
+<li>上传tar    </li>
+<li>解压    </li>
+<li>编译  <code>./configure</code>    </li>
+<li>安装  <code>make &amp;&amp; make install</code>    [安装后的路径: /usr/local/nginx/sbin/nginx]    </li>
+</ul>
+<h2 id="9-4-Nginx的常用命令"><a href="#9-4-Nginx的常用命令" class="headerlink" title="9.4 Nginx的常用命令"></a>9.4 Nginx的常用命令</h2><p>[nginx的配置文件 conf/nginx.conf]    </p>
+<p>[使用nginx的命令的前提是: 必须要进入 /usr/local/nginx/sbin (nginx的)目录中]    </p>
+<ul>
+<li><p>查看nginx版本号  <code>./nginx -v</code>    </p>
+</li>
+<li><p>启动nginx  <code>./nginx</code>    </p>
+</li>
+<li><p>停止ngins  <code>./nginx - s stop</code>    </p>
+</li>
+<li><p>重新加载nginx  <code>./nginx -s reload</code></p>
+</li>
+<li><p>nginx的配置文件的位置</p>
+</li>
+<li><ul>
+<li>安装目录下的 conf文件夹下的 nginx.conf    [/usr/local/nginx/conf/nginx.conf] </li>
+<li>配置文件的组成, nginx的配置文件由三部分组成    </li>
+</ul>
+</li>
+<li><ul>
+<li><ul>
+<li><strong>全局块</strong> : 从配置文件开始到events块之间的内容, 主要会设置一些影响nginx服务器整体运行的配置指令, 主要包括配置运行nginx服务器的用户(组)/允许生成的work process参数/ 进程PID存放路径/日志存放路径和类型以及配置文件的引入等.</li>
+<li><strong>events块</strong></li>
+<li><strong>http块</strong></li>
+<li><strong>http全局块</strong></li>
+<li><strong>server块</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="9-4-1-Nginx-‘localtion’匹配规则"><a href="#9-4-1-Nginx-‘localtion’匹配规则" class="headerlink" title="9.4.1 Nginx ‘localtion’匹配规则"></a>9.4.1 Nginx ‘localtion’匹配规则</h3><ol>
+<li>[~] : 波浪线标示执行一个正则匹配, 区分大小写;</li>
+<li>[~*] : 表示执行一个正则匹配, 不区分大小写;</li>
+<li>[^~] : 表示普通字符匹配, 如果该选项匹配, 只匹配该选项, 不匹配别的选项. 一般用来匹配目录;</li>
+<li>[=] : 进行普通字符精确匹配;</li>
+<li>[@] : 定义一个命名的localtion, 使用在内部定向, 例如: error_page, try_files;</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs xml">location  = / &#123;<br>  # 只匹配&quot;/&quot;.<br>  [ configuration A ] <br>&#125;<br>location  / &#123;<br>  # 匹配任何请求，因为所有请求都是以&quot;/&quot;开始<br>  # 但是更长字符匹配或者正则表达式匹配会优先匹配<br>  [ configuration B ] <br>&#125;<br>location ^~ /images/ &#123;<br>  # 匹配任何以 /images/ 开始的请求，并停止匹配 其它location<br>  [ configuration C ] <br>&#125;<br>location ~* .(gif|jpg|jpeg)$ &#123;<br>  # 匹配以 gif, jpg, or jpeg结尾的请求. <br>  # 但是所有 /images/ 目录的请求将由 [Configuration C]处理.   <br>  [ configuration D ] <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="9-4-2-Ngxin-‘localtion’匹配优先级"><a href="#9-4-2-Ngxin-‘localtion’匹配优先级" class="headerlink" title="9.4.2 Ngxin ‘localtion’匹配优先级"></a>9.4.2 Ngxin ‘localtion’匹配优先级</h3><h2 id="9-5-Ngxin反向代理"><a href="#9-5-Ngxin反向代理" class="headerlink" title="9.5 Ngxin反向代理"></a>9.5 Ngxin反向代理</h2><h3 id="9-5-1-tomcat启动端口-8080"><a href="#9-5-1-tomcat启动端口-8080" class="headerlink" title="9.5.1 tomcat启动端口 8080"></a>9.5.1 tomcat启动端口 8080</h3><h3 id="9-5-2-nginx监听端口-80"><a href="#9-5-2-nginx监听端口-80" class="headerlink" title="9.5.2 nginx监听端口 80"></a>9.5.2 nginx监听端口 80</h3><p>要求: 使用nginx的反向代理, 访问80端口即访问tomcat80端口</p>
+<h3 id="9-5-3-在nginx-xml中做如下配置"><a href="#9-5-3-在nginx-xml中做如下配置" class="headerlink" title="9.5.3 在nginx.xml中做如下配置"></a>9.5.3 在nginx.xml中做如下配置</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs xml">worker_processes  1;        <br>events &#123;            <br>	worker_connections  1024;        <br>&#125;        <br>http &#123;            <br>	include       mime.types;            <br>  default_type  application/octet-stream;            <br>	sendfile        on;            <br>	keepalive_timeout  65;            <br>	<br>	server &#123;                <br>		listen       80;                <br>		server_name  [服务器当前IP地址];                <br><br>		location / &#123;                    <br>			root   html;                    <br>			proxy_pass http://127.0.0.1:8080;                    <br>			index  index.html index.htm;                <br>		&#125;                <br><br>		location = /50x.html &#123;                    <br>			root   html;                <br>		&#125;            <br>&#125;        <br></code></pre></td></tr></table></figure>
+
+
+
+<p>负载均衡</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs xml">  worker_processes  1;        <br>	events &#123;            <br>		worker_connections  1024;        <br>	&#125;        <br>	<br>	http &#123;            <br>		include       mime.types;            <br>		default_type  application/octet-stream;<br>		sendfile        on;<br>		keepalive_timeout  65;<br>		upstream myserver &#123;<br>			server [服务器当前IP地址:端口号];<br>			server [服务器当前IP地址:端口号];<br>		&#125;<br>		<br>		server &#123;<br>			listen       80;<br>			server_name  [服务器当前IP地址];<br>			<br>			location / &#123;<br>				root   html;<br>				proxy_pass http://myserver;<br>				index  index.html index.htm;<br>			&#125;<br>		<br>			location = /50x.html &#123;<br>				root   html;<br>			&#125;<br>   &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="9-5-4-Nginx配置ssl"><a href="#9-5-4-Nginx配置ssl" class="headerlink" title="9.5.4 Nginx配置ssl"></a>9.5.4 Nginx配置ssl</h3><ul>
+<li>编译带ssl插件的nginx  <code>./configure --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module</code></li>
+<li>安装  <code>make &amp;&amp; make install</code></li>
+<li>检查nginx是否正确安装带ssl插件  <code>./nginx -V</code> 出现 <strong>configure arguments: –with-http_stub_status_module –with-http_ssl_module</strong> 表示正确安装</li>
+<li>修改nginx权限  <code>chmod 111 nginx</code></li>
+<li>配置文件</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs xml">http &#123;    <br>	include       mime.types;    <br>	default_type  application/octet-stream;    <br>	sendfile        on;    <br>	keepalive_timeout  65;  <br><br>	server &#123;  <br>		#监听443端口    <br>		listen 443;    <br>		#你的域名    <br>		server_name huiblog.top;     <br>		ssl on;    <br><br>		#ssl证书的pem文件路径    <br>		ssl_certificate  /root/card/datav.abin9999.com_chain.crt;    <br>		#ssl证书的key文件路径    <br>		ssl_certificate_key /root/card/datav.abin9999.com_key.key;    <br><br>		location / &#123;     <br>			proxy_pass  http://公网地址:项目端口号;    <br>			&#125;<br>		&#125;    <br>	<br>		server &#123;        <br>			listen 80;        <br>			server_name huiblog.top;        <br>			#将请求转成https        <br>			rewrite ^(.*)$ https://$host$1 permanent;    <br>		&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>配置完成后 重启nginx <code>./nginx -s reload./nginx -s stop./nginx</code></li>
+</ul>
+<h2 id="9-6-yum方式安装Ngxin"><a href="#9-6-yum方式安装Ngxin" class="headerlink" title="9.6 yum方式安装Ngxin"></a>9.6 yum方式安装Ngxin</h2><h3 id="9-6-1-添加Ngxin的yum源"><a href="#9-6-1-添加Ngxin的yum源" class="headerlink" title="9.6.1 添加Ngxin的yum源"></a>9.6.1 添加Ngxin的yum源</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm<br></code></pre></td></tr></table></figure>
+
+<h3 id="9-6-2-yum命令安装"><a href="#9-6-2-yum命令安装" class="headerlink" title="9.6.2 yum命令安装"></a>9.6.2 yum命令安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum install -y nginx<br></code></pre></td></tr></table></figure>
+
+<h3 id="9-6-3-yum安装Ngxin文件路径"><a href="#9-6-3-yum安装Ngxin文件路径" class="headerlink" title="9.6.3 yum安装Ngxin文件路径"></a>9.6.3 yum安装Ngxin文件路径</h3><ul>
+<li>配置文件路径  <code>/etc/nginx</code></li>
+<li>可执行文件路径  <code>/usr/sbin/nginx</code></li>
+</ul>
+<h2 id="9-7-将Nginx命令添加到系统环境变量"><a href="#9-7-将Nginx命令添加到系统环境变量" class="headerlink" title="9.7 将Nginx命令添加到系统环境变量"></a>9.7 将Nginx命令添加到系统环境变量</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ln</span> -s [nginx可执行文件所在路径] /usr/local/bin<br></code></pre></td></tr></table></figure>
+
+<h2 id="9-8-使用Ngxin实现视频点播"><a href="#9-8-使用Ngxin实现视频点播" class="headerlink" title="9.8 使用Ngxin实现视频点播"></a>9.8 使用Ngxin实现视频点播</h2><img src="/2023/03/22/%E5%85%B3%E4%BA%8ECentOS-7-6-%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C/1633145707522-2e31d06e-feaf-49f9-b7b7-8473c9e580da-16794276879293.png" srcset="/img/loading.gif" lazyload class="" title="img">
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">./configure --add-module=../nginx-rtmp-module-1.2.2<br></code></pre></td></tr></table></figure>
+
+<p>编译成功后安装</p>
+<img src="/2023/03/22/%E5%85%B3%E4%BA%8ECentOS-7-6-%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C/1633145788597-54f1db72-2d8a-4fc6-97f7-9f4ebffa4584.png" srcset="/img/loading.gif" lazyload class="" title="img">
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">make &amp;&amp; make install<br></code></pre></td></tr></table></figure>
+
+
+
+<p>Nginx视频模块配置文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash">rtmp &#123;                <span class="hljs-comment">#RTMP服务</span><br>    server &#123;<br>        listen 1935;  <span class="hljs-comment">#//服务端口 </span><br>        chunk_size 4096;   <span class="hljs-comment">#//数据传输块的大小</span><br><br>        application vod &#123;<br>            play /home/video; <span class="hljs-comment">#//视频文件存放位置。</span><br>            <span class="hljs-comment"># on_play http://localhost:10086/user/auth;</span><br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="9-8-使用Ngxin实现视频直播推流"><a href="#9-8-使用Ngxin实现视频直播推流" class="headerlink" title="9.8 使用Ngxin实现视频直播推流"></a>9.8 使用Ngxin实现视频直播推流</h2><ol>
+<li>需要nginx在编译时导入rtmp模块<br>下载地址： <a target="_blank" rel="noopener" href="https://github.com/arut/nginx-rtmp-module/tags">https://github.com/arut/nginx-rtmp-module/tags</a></li>
+<li>上传下载的文件到服务器，或者使用curl或者wget直接下载到服务器</li>
+<li>解压下载的压缩文件</li>
+<li>在编译nginx时加上对应插件</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">./configure --add-module=../nginx-rtmp-module<br>make &amp;&amp; make install<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>安装FFmpeg</li>
+</ol>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">1.</span> 安装启用EPEL软件存储库<br>  sudo yum install epel-release<br><span class="hljs-bullet">2.</span> 导入存储库GPG密钥并通过安装rpm软件包来启用Nux存储库<br>  sudo rpm -v --import http://li.nux.ro/download/nux/RPM-GPG-KEY-nux.ro<br>  sudo rpm -Uvh http://li.nux.ro/download/nux/dextop/el7/x86<span class="hljs-emphasis">_64/nux-dextop-release-0-5.el7.nux.noarch.rpm</span><br><span class="hljs-emphasis">3. 安装FFmpeg</span><br><span class="hljs-emphasis">  sudo yum install ffmpeg ffmpeg-devel</span><br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs xml">rtmp &#123;<br>    server &#123;<br>        listen 1935;<br><br>        application live &#123;<br>            live on;<br>            # on_publish http://127.0.0.1:8686/auth;<br>            # on_play http://127.0.0.1:8686/auth;<br>        &#125;<br>		<br>        application hls &#123;<br>            live on;<br>            hls on;  <br>            hls_path temp/hls;  <br>            hls_fragment 8s;  <br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="9-9-使用Nginx做静态图片服务器"><a href="#9-9-使用Nginx做静态图片服务器" class="headerlink" title="9.9 使用Nginx做静态图片服务器"></a>9.9 使用Nginx做静态图片服务器</h2><p>只需要配置对应配置文件即可</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs xml">location ~ .*\.(gif|jpg|jpeg|png)$ &#123; <br>      # expires 24h;    # 客户端缓存数据时长<br>      root  /opt/upload/iot;#指定图片存放路径   <br>      proxy_store on; <br>      proxy_store_access user:rw group:rw all:rw; <br>      proxy_temp_path    /opt/upload/iot;#图片访问路径 <br>      proxy_redirect     off; <br>      proxy_set_header    Host 127.0.0.1; <br>      client_max_body_size  10m; <br>      client_body_buffer_size 1280k; <br>      proxy_connect_timeout  900; <br>      proxy_send_timeout   900; <br>      proxy_read_timeout   900; <br>      proxy_buffer_size    40k; <br>      proxy_buffers      40 320k; <br>      proxy_busy_buffers_size 640k; <br>      proxy_temp_file_write_size 640k; <br><br>      # 资源不存在时，跳转<br>      if ( !-e $request_filename) <br>      &#123; <br>          proxy_pass http://127.0.0.1;#默认80端口 <br>      &#125; <br> &#125;  <br></code></pre></td></tr></table></figure>
+
+<h2 id="9-10-Nginx做端口映射-跳板机"><a href="#9-10-Nginx做端口映射-跳板机" class="headerlink" title="9.10 Nginx做端口映射(跳板机)"></a>9.10 Nginx做端口映射(跳板机)</h2><p>实现目的: 使用一台服务器或多台服务器中转跳接 登录其他服务器. 隐藏真实访问目标服务器ssh连接ip地址信息</p>
+<p>nginx版本要求 1.8.X 以上</p>
+<p>在配置文件中配置的nginx监听的端口需要在防火墙中配置放行</p>
+<ol>
+<li>编译时, 需编译进 stream 模块.<br><code>./configure –with-stream</code></li>
+<li>编写 stream 配置(和http配置同级)</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs xml">stream &#123;    #stream模块与http模块处于同一级；stream模块编译后需要手动添加；这两个模块可以共存。<br>    upstream remote01&#123;    <br>        server 192.168.110.101:22;       #内网服务器101，端口为sshd默认的22<br>    &#125;<br>    upstream remote02&#123;<br>        server 192.168.110.102:22;       #内网服务器102，端口为sshd默认的22<br>    &#125;<br><br>    server &#123;<br>        listen 2201;                    #监听代理主机的2201端口，通过该端口映射到内网的22端口<br>        proxy_connect_timeout 1h;<br>        proxy_timeout 1h;<br>        proxy_pass remote01;            #转向内网服务器101<br>    &#125;<br>    server &#123;<br>        listen 2202;                    ##监听代理主机的2202端口，通过该端口映射到内网的22端口<br>        proxy_connect_timeout 1h;<br>        proxy_timeout 1h;<br>        proxy_pass remote02;            ##转向内网服务器102<br>    &#125;<br>&#125;<br><br>注意1：server里面不能够使用location这种语句，否则报错；语法虽与http模块类似，但是有区别的。<br>注意2：如果与代理主机绑定多个二级域名，在server虚拟机中不可以具体指向二级域名，只需要指明需要监听的代理主机的端口即可，比如上述中的server主机如下设置的话，连接会失败。<br>server &#123;<br>        listen ns01.testing.com:2201;   #ns01.testing.com为绑定代理主机的二级域名，通过该域名对应访问内网服务器           <br>        ......<br>        proxy_pass remote01;            <br>&#125;<br>server &#123;<br>        listen ns02.testing.com:2202;  ##ns02.testing.com为绑定代理主机的二级域名，通过该域名对应访问内网服务器                             <br>        ......<br>        proxy_pass remote02;   <br>&#125;    <br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>启动或重新加载nginx即可.</li>
+</ol>
+<h2 id="9-11-平滑升级"><a href="#9-11-平滑升级" class="headerlink" title="9.11 平滑升级"></a>9.11 平滑升级</h2><p>在不中断服务和服务的请求的同时, 进行nginx二进制可执行文件的升级</p>
+<hr>
+<h1 id="10-MinIO"><a href="#10-MinIO" class="headerlink" title="10. MinIO"></a>10. MinIO</h1><h2 id="10-1-安装"><a href="#10-1-安装" class="headerlink" title="10.1. 安装"></a>10.1. 安装</h2><ul>
+<li>下载二进制源码包  <code>wget https://dl.min.io/server/minio/release/linux-ppc64le/minio</code></li>
+<li>赋予文件可执行权限 <code>chmod +x minio</code></li>
+<li>移动文件 <code>mv minio /usr/local/</code></li>
+<li>创建minio数据文件存放目录 <code>mkdir -p /home/minio/data</code></li>
+</ul>
+<h2 id="10-2-服务命令"><a href="#10-2-服务命令" class="headerlink" title="10.2 服务命令"></a>10.2 服务命令</h2><ul>
+<li>启动minio <code>/usr/local/minio server /home/minio/data/</code></li>
+<li>后台运行 <code>nohup /usr/local/minio server /home/minio/data &gt; /home/minio/data/minio.log 2&gt;&amp;1 &amp;</code></li>
+<li>指定ip:port <code>nohup /usr/local/minio server --address your_ip:8999  /home/minio/data &gt; /home/minio/data/minio.log 2&gt;&amp;1 &amp;</code></li>
+</ul>
+<hr>
+<h1 id="11-自定义启动脚本"><a href="#11-自定义启动脚本" class="headerlink" title="11. 自定义启动脚本"></a>11. 自定义启动脚本</h1><ul>
+<li>在 <code>/etc/rc.d/rc.local</code> 中添加想要执行的命令(脚本)</li>
+<li>给对应文件赋予可执行权限 <code>chmod +x /etc/rc.d/rc.local</code></li>
+<li>注意: <code>/etc/rc.local</code> 是 <code>/etc/rc.d/rc.local</code> 的软链接</li>
+</ul>
+<hr>
+<h1 id="12-yasm编辑环境安装"><a href="#12-yasm编辑环境安装" class="headerlink" title="12. yasm编辑环境安装"></a>12. yasm编辑环境安装</h1><p>前提：系统中需要有gcc环境</p>
+<p>如果没有，可使用  <code>yum install -y gcc gcc-c++</code>进行安装</p>
+<ol>
+<li>下载二进制源码包</li>
+</ol>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">curl http:<span class="hljs-regexp">//</span>www.tortall.net<span class="hljs-regexp">/projects/y</span>asm<span class="hljs-regexp">/releases/y</span>asm-<span class="hljs-number">1.2</span>.<span class="hljs-number">0</span>.tar.gz &gt;yasm.tar.gz<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>解压文件<br><code>tar xzvf yasm.tar.gz</code></li>
+<li>进入到目录<br><code>cd yasm-1.2.0</code></li>
+<li>编译<br><code>./configure</code></li>
+<li>安装<br><code>make &amp;&amp; make install</code></li>
+</ol>
+<hr>
+<h1 id="13-Redis"><a href="#13-Redis" class="headerlink" title="13. Redis"></a>13. Redis</h1><p>简介: 一个基于内存实现的用C语言编写的内存型k-v键值对数据库</p>
+<h2 id="13-1-安装"><a href="#13-1-安装" class="headerlink" title="13.1 安装"></a>13.1 安装</h2><p>使用源码编译方式安装：</p>
+<ol>
+<li>下载<br>下载地址： <a target="_blank" rel="noopener" href="https://redis.io/download/#redis-downloads">https://redis.io/download/#redis-downloads</a></li>
+</ol>
+<p>1.1 本地下载后，使用FTP上传到服务器中；<br>1.2 使用<code>wget</code>命令下载</p>
+<p>找到所需要的版本后，右键下载超链后，选择复制链接</p>
+<img src="/2023/03/22/%E5%85%B3%E4%BA%8ECentOS-7-6-%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C/1655686967355-a44fed7c-a785-4e58-a820-9c80c91b7fb8.png" srcset="/img/loading.gif" lazyload class="" title="img">
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">wget -O /另存为目标路径/另存为文件名 下载地址<br><span class="hljs-comment"># wget -O /usr/local/temp/redis.tar.gz https://download.redis.io/releases/redis-6.0.16.tar.gz</span><br>或<br><br><span class="hljs-built_in">cd</span> 下载保存路径<br>wget 下载地址<br><span class="hljs-comment"># cd /usr/local/temp</span><br><span class="hljs-comment"># wget https://download.redis.io/releases/redis-6.0.16.tar.gz</span><br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>编译安装<br>使用<code>tar</code>命令解压下载的文件</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">tar -zxf redis-6.0.16.tar.gz<br></code></pre></td></tr></table></figure>
+
+<p>解压文件后，使用 <code>cd</code>指令进入到 redis 源码路径中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> redis-6.0.16<br></code></pre></td></tr></table></figure>
+
+<p>编译所需环境安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum -y install make zlib zlib-devel gcc-c++ libtool openssl openssl-devel<br></code></pre></td></tr></table></figure>
+
+<p>使用<code>make</code>编译安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">make &amp;&amp; make install<br></code></pre></td></tr></table></figure>
+
+<img src="/2023/03/22/%E5%85%B3%E4%BA%8ECentOS-7-6-%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C/1655687427960-abf06712-76ed-4ff3-869c-305cb1649ecd.png" srcset="/img/loading.gif" lazyload class="" title="img">
+
+<p>启动服务文件位置在 安装路径（redis源码文件解压路径下的 src 下）</p>
+<p>使用 <code>rpm</code>包文件安装方式：</p>
+<h2 id="13-2-常用配置"><a href="#13-2-常用配置" class="headerlink" title="13.2 常用配置"></a>13.2 常用配置</h2><h3 id="13-2-1-设置Redis密码"><a href="#13-2-1-设置Redis密码" class="headerlink" title="13.2.1 设置Redis密码"></a>13.2.1 设置Redis密码</h3><ul>
+<li>设置永久性的密码, 修改配置文件</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">requirepass 设置的密码<br></code></pre></td></tr></table></figure>
+
+<h3 id="13-2-2-配置外网可见"><a href="#13-2-2-配置外网可见" class="headerlink" title="13.2.2 配置外网可见"></a>13.2.2 配置外网可见</h3><p>修改配置文件: vi /etc/redis/6379.conf</p>
+<h3 id="13-2-3-Docker容器启动redis"><a href="#13-2-3-Docker容器启动redis" class="headerlink" title="13.2.3 Docker容器启动redis"></a>13.2.3 Docker容器启动redis</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run -di --name=myredis -p6379:6379 --restart=always -d redis --requirepass <span class="hljs-string">&quot;wocoanima&quot;</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="14-Maven环境安装"><a href="#14-Maven环境安装" class="headerlink" title="14. Maven环境安装"></a>14. Maven环境安装</h1><h2 id="14-1-下载Maven"><a href="#14-1-下载Maven" class="headerlink" title="14.1 下载Maven"></a>14.1 下载Maven</h2><ol>
+<li>使用wget从官网下载maven编译后的包</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">wget https://dlcdn.apache.org/maven/maven-3/3.8.3/binaries/apache-maven-3.8.3-bin.tar.gz<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>解压文件</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">tar -zxf apache-maven-3.8.3-bin.tar.gz<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>移动至<code>/usr/local</code>下</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mv ./apache-maven-3.8.3 /usr/local<br></code></pre></td></tr></table></figure>
+
+<h2 id="14-2-配置环境变量"><a href="#14-2-配置环境变量" class="headerlink" title="14.2 配置环境变量"></a>14.2 配置环境变量</h2><ul>
+<li>修改环境变量配置文件 /etc/profile</li>
+<li>在环境变量配置文件末尾添加配置</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># MAVEN_HOME</span><br>MAVEN_HOME=/usr/local/apache-maven-3.5.0<br><span class="hljs-built_in">export</span> MAVEN_HOME<br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$&#123;PATH&#125;</span>:<span class="hljs-variable">$&#123;MAVEN_HOME&#125;</span>/bin<br>&lt;mirrors&gt;<br>  &lt;mirror&gt; <br>    &lt;<span class="hljs-built_in">id</span>&gt;alimaven&lt;/id&gt; <br>    &lt;name&gt;aliyun maven&lt;/name&gt; <br>    &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public/&lt;/url&gt; <br>    &lt;mirrorOf&gt;central&lt;/mirrorOf&gt; <br>  &lt;/mirror&gt; <br>&lt;/mirrors&gt;<br><br>或<br><br>&lt;mirror&gt;	<br>	&lt;<span class="hljs-built_in">id</span>&gt;alimaven&lt;/id&gt;	<br>	&lt;mirrorOf&gt;central&lt;/mirrorOf&gt;	<br>	&lt;name&gt;aliyun maven&lt;/name&gt;	<br>	&lt;url&gt;http://maven.aliyun.com/nexus/content/repositories/central/&lt;/url&gt;<br>&lt;/mirror&gt;<br>&lt;mirror&gt;<br>   &lt;<span class="hljs-built_in">id</span>&gt;huaweicloud&lt;/id&gt;<br>   &lt;mirrorOf&gt;*&lt;/mirrorOf&gt;<br>   &lt;url&gt;https://mirrors.huaweicloud.com/repository/maven/&lt;/url&gt;<br>&lt;/mirror&gt;<br>&lt;profile&gt;  <br>    &lt;<span class="hljs-built_in">id</span>&gt;jdk18&lt;/id&gt;  <br>    &lt;activation&gt;  <br>        &lt;activeByDefault&gt;<span class="hljs-literal">true</span>&lt;/activeByDefault&gt;  <br>        &lt;jdk&gt;1.8&lt;/jdk&gt;  <br>    &lt;/activation&gt;  <br>    &lt;properties&gt;  <br>        &lt;maven.compiler.source&gt;1.8&lt;/maven.compiler.source&gt;  <br>        &lt;maven.compiler.target&gt;1.8&lt;/maven.compiler.target&gt;  <br>        &lt;maven.compiler.compilerVersion&gt;1.8&lt;/maven.compiler.compilerVersion&gt;  <br>    &lt;/properties&gt;   <br>&lt;/profile&gt;  <br>&lt;build&gt;  <br>    &lt;plugins&gt;  <br>        &lt;plugin&gt;  <br>            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;  <br>            &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;  <br>            &lt;configuration&gt;  <br>                &lt;<span class="hljs-built_in">source</span>&gt;11&lt;/source&gt;  <br>                &lt;target&gt;11&lt;/target&gt;  <br>            &lt;/configuration&gt;  <br>        &lt;/plugin&gt;  <br>    &lt;/plugins&gt;  <br>&lt;/build&gt;<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="15-Apache-apollo-–-gt-mqtt-物联网消息队列-部署"><a href="#15-Apache-apollo-–-gt-mqtt-物联网消息队列-部署" class="headerlink" title="15. Apache apollo –&gt; mqtt(物联网消息队列) 部署"></a>15. Apache apollo –&gt; mqtt(物联网消息队列) 部署</h1><ul>
+<li>下载mqtt可执行文件包</li>
+</ul>
+<h1 id="16-RabbitMq"><a href="#16-RabbitMq" class="headerlink" title="16. RabbitMq"></a>16. RabbitMq</h1><h2 id="16-1-rabbitMq和Erlang的对应关系"><a href="#16-1-rabbitMq和Erlang的对应关系" class="headerlink" title="16.1 rabbitMq和Erlang的对应关系"></a>16.1 rabbitMq和Erlang的对应关系</h2><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">https:<span class="hljs-regexp">//</span>www.rabbitmq.com/which-erlang.html<br></code></pre></td></tr></table></figure>
+
+<h2 id="16-2-依赖Erlang"><a href="#16-2-依赖Erlang" class="headerlink" title="16.2 依赖Erlang"></a>16.2 依赖Erlang</h2><ul>
+<li>前提条件</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | sudo bash<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>通过yum安装Erlang</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum install -y erlang<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>查看Er的版本号</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">erl<br></code></pre></td></tr></table></figure>
+
+<h2 id="16-3-安装RabbitMq"><a href="#16-3-安装RabbitMq" class="headerlink" title="16.3 安装RabbitMq"></a>16.3 安装RabbitMq</h2><ul>
+<li><p>前提条件</p>
+</li>
+<li><ul>
+<li>先导入key</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">rpm --import https://packagecloud.io/rabbitmq/rabbitmq-server/gpgkey<br>rpm --import https://packagecloud.io/gpg.key<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><ul>
+<li>前置配置</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | sudo bash<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>下载RabbitMq的安装包</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">wget https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.8.5/rabbitmq-server-3.8.5-1.el7.noarch.rpm<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><ul>
+<li>安装</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">rpm -ivh rabbitmq-server-3.8.5-1.el7.noarch.rpm<br></code></pre></td></tr></table></figure>
+
+<h2 id="16-4-RabbitMQ服务启动"><a href="#16-4-RabbitMQ服务启动" class="headerlink" title="16.4 RabbitMQ服务启动"></a>16.4 RabbitMQ服务启动</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 服务启动 </span><br>systemctl start rabbitmq-server<br><br><span class="hljs-comment"># 加入自启动列表</span><br>systemctl <span class="hljs-built_in">enable</span> rabbitmq-server<br><br><span class="hljs-comment"># 服务停止</span><br>systemctl stop rabbitmq-server<br><br><span class="hljs-comment"># 服务重启</span><br>systemctl restart rabbitmq-server<br><br><span class="hljs-comment"># 移除自启动列表</span><br>systemctl <span class="hljs-built_in">disable</span> rabbitmq-server<br></code></pre></td></tr></table></figure>
+
+<h2 id="16-5-RabbitMQ账户配置及web管理页面开启"><a href="#16-5-RabbitMQ账户配置及web管理页面开启" class="headerlink" title="16.5 RabbitMQ账户配置及web管理页面开启"></a>16.5 RabbitMQ账户配置及web管理页面开启</h2><p>1、删除guest默认账号（可选配置）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">rabbitmqctl delete_user guest<br></code></pre></td></tr></table></figure>
+
+<p>2、添加账号</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">rabbitmqctl add_user 用户名 密码<br></code></pre></td></tr></table></figure>
+
+<p>3、修改账号权限为Administrator</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">rabbitmqctl set_user_tags 用户名 administrator<br></code></pre></td></tr></table></figure>
+
+<p>4、赋予账号资源权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">rabbitmqctl set_permissions -p / 用户名 <span class="hljs-string">&quot;.*&quot;</span> <span class="hljs-string">&quot;.*&quot;</span> <span class="hljs-string">&quot;.*&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>5、启动管理web页面</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">rabbitmq-plugins <span class="hljs-built_in">enable</span> rabbitmq_management<br></code></pre></td></tr></table></figure>
+
+<p>管理web访问地址 ： http://{ip}:15672</p>
+<h1 id="17-crontab-定时任务"><a href="#17-crontab-定时任务" class="headerlink" title="17. crontab 定时任务"></a>17. crontab 定时任务</h1><p>执行一些特殊需求的任务时, 需要用到CentOS自带得定时任务</p>
+<p>crontab的cron表达式中, 不包含秒的字段.</p>
+<img src="/2023/03/22/%E5%85%B3%E4%BA%8ECentOS-7-6-%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C/1638867197103-6c8657af-97e2-469f-acd7-74f2e011c8c0.png" srcset="/img/loading.gif" lazyload class="" title="img">
+
+<h2 id="17-1-方式一"><a href="#17-1-方式一" class="headerlink" title="17.1 方式一"></a>17.1 方式一</h2><ul>
+<li>修改定时任务配置文件 <code>/etc/crontab</code> 文件</li>
+<li>语法: <code> cron表达式  command</code></li>
+<li>编辑完成, 保存退出. 执行:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">/sbin/service crond reload<br></code></pre></td></tr></table></figure>
+
+<h2 id="17-2-方式二"><a href="#17-2-方式二" class="headerlink" title="17.2 方式二"></a>17.2 方式二</h2><ul>
+<li>使用命令添加任务清单列表<br><code>crontab -e</code></li>
+<li>添加定时任务配置<br>语法: <code>cron表达式  command</code></li>
+<li>编辑完成, 保存退出. 执行</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">/sbin/service crond reload<br></code></pre></td></tr></table></figure>
+
+<h2 id="17-3-常用命令"><a href="#17-3-常用命令" class="headerlink" title="17.3 常用命令"></a>17.3 常用命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">/sbin/service crond reload  --&gt; 重新加载定时任务配置文件<br>/sbin/service crond start	  --&gt; 启动定时任务组件<br>/sbin/service crond restart --&gt; 重启定时任务组件<br>/sbin/service crond stop    --&gt; 停止定时任务组件<br>crontab -e	                --&gt; 快速添加定时任务<br>crontab -r	                --&gt; 停止已配置的定时任务<br>crontab -l                  --&gt; 查看当前已经配置(加载)的定时任务配置<br></code></pre></td></tr></table></figure>
+
+<h1 id="18-Shell"><a href="#18-Shell" class="headerlink" title="18. Shell"></a>18. Shell</h1><h2 id="18-1-规范"><a href="#18-1-规范" class="headerlink" title="18.1 规范"></a>18.1 规范</h2><ul>
+<li>shell脚本首行以  <code>#! /bin/bash</code> 开头</li>
+<li>shell脚本后缀符号以  .<code>sh</code> 结尾</li>
+</ul>
+<h2 id="18-2-变量定义"><a href="#18-2-变量定义" class="headerlink" title="18.2 变量定义"></a>18.2 变量定义</h2><ul>
+<li>语法  <code>变量名=值</code><br>例如: number=100</li>
+<li>变量同样具有命名规范, 和java C 等编程语言类似(不要用奇奇怪怪的名字来命名)</li>
+</ul>
+<h2 id="18-3-if"><a href="#18-3-if" class="headerlink" title="18.3 if"></a>18.3 if</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">if [ 条件表达式 ]<br>then<br>	command1<br>  command2<br>  ...<br>  commandN<br>fi<br></code></pre></td></tr></table></figure>
+
+<h2 id="18-4-if-else"><a href="#18-4-if-else" class="headerlink" title="18.4 if-else"></a>18.4 if-else</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell">if [ 条件表达式 ]<br>then<br>	command1<br>  command2<br>  ...<br>  commandN<br>else<br>	command<br>fi<br></code></pre></td></tr></table></figure>
+
+<h2 id="18-5-if-else-if-else"><a href="#18-5-if-else-if-else" class="headerlink" title="18.5 if-else if -else"></a>18.5 if-else if -else</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs shell">if [ 条件表达式 ]<br>then<br>	command1<br>  command2<br>  ...<br>  commandN<br>elif [ 条件表达式 ]<br>	command<br>else<br>	command<br>fi<br></code></pre></td></tr></table></figure>
+
+<h2 id="18-6-数组"><a href="#18-6-数组" class="headerlink" title="18.6 数组"></a>18.6 数组</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs plain">1. 声明数组<br>	arr_name=(value1 value2 value3 ...)<br>2. 取数组长度<br>	$&#123;#arr_name[@]&#125;<br>  $&#123;#arr_name[*]&#125;<br>3. 取数组元素<br>	$&#123;arr_name[index]&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="18-7-while"><a href="#18-7-while" class="headerlink" title="18.7 while"></a>18.7 while</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs shell">while ( 条件表达式 )<br>do<br>	command<br>done<br><span class="hljs-meta prompt_">#</span><span class="language-bash">循环遍历数组</span><br>arr=(a b c d e f g)<br>index=0<br>while ( $index &lt; $&#123;#arr[@]&#125; )<br>do<br>	echo $&#123;arr[$&#123;index&#125;]&#125;<br>  let &quot;index++&quot;<br>done<br></code></pre></td></tr></table></figure>
+
+<h2 id="18-8-for"><a href="#18-8-for" class="headerlink" title="18.8 for"></a>18.8 for</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs plain">for [item] in [容器]<br>do<br>	command<br>done<br># 循环一个数组<br>for item in This is a demo<br>do<br>	echo $item<br>done<br>---------<br>输出结果<br>This<br>is<br>a<br>demo<br># 循环一个数组<br>arr=(a b c d e f g)<br>for item in $&#123;arr[@]&#125;<br>do<br>	echo $item<br>done<br></code></pre></td></tr></table></figure>
+
+<h2 id="18-9-携带参数"><a href="#18-9-携带参数" class="headerlink" title="18.9 携带参数"></a>18.9 携带参数</h2><p>在sh脚本执行时, 在后面携带参数  <code>./xxx.sh start</code> 其中 start 就是携带的参数</p>
+<p>在shell中 获取参数方式按照顺序 从0开始  0表示脚本本身 实际获取参数从1开始</p>
+<p>语法:<code>$[位置]</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">获取输入的参数</span><br>input=$1<br>if [ -z $input ]<br>then<br>	echo &#x27;入参为空&#x27;<br>else<br>	echo &#x27;入参为&#x27;$input&#x27;&#x27;<br>fi<br>-------------<br>./xxx.sh start<br>入参为start<br></code></pre></td></tr></table></figure>
+
+<h1 id="19-更新内核"><a href="#19-更新内核" class="headerlink" title="19. 更新内核"></a>19. 更新内核</h1><ul>
+<li>查看方法<br><code>cat /etc/redhat-release</code></li>
+<li>内核版本<br><code>uname -r</code></li>
+</ul>
+<h2 id="19-1-更新内核"><a href="#19-1-更新内核" class="headerlink" title="19.1 更新内核"></a>19.1 更新内核</h2><ol>
+<li>更新yum仓库为EL仓库</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org<br>rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>查看可供更新的版本</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum --disablerepo=<span class="hljs-string">&quot;*&quot;</span> --enablerepo=<span class="hljs-string">&quot;elrepo-kernel&quot;</span> list available<br></code></pre></td></tr></table></figure>
+
+<img src="/2023/03/22/%E5%85%B3%E4%BA%8ECentOS-7-6-%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C/1640310677304-ba4e0398-b9c4-4f5a-8c07-031f19380ebf.png" srcset="/img/loading.gif" lazyload class="" title="img">
+
+<p>选择指定版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum --enablerepo=elrepo-kernel install kernel-lt<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>查看系统中已经安装的内核版本</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum --enablerepo=elrepo-kernel install kernel-lt<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>修改默认版本</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">grub2-set-default [上面3步骤中查询出来的你要更换的内核版本的序号]<br></code></pre></td></tr></table></figure>
+
+<p>修改配置文件 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim /etc/default/grub<br>设置 GRUB_DEFAULT=0<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>生成配置文件</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">grub2-mkconfig -o /boot/grub2/grub.cfg<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>重启</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">reboot<br></code></pre></td></tr></table></figure>
+
+<h2 id="19-2-卸载旧版本"><a href="#19-2-卸载旧版本" class="headerlink" title="19.2 卸载旧版本"></a>19.2 卸载旧版本</h2><ol>
+<li>查看已经安装的内核</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">rpm -qa | grep kernel<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>卸载所有3版本</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum -y remove kernel-tools-3.10.0-862.el7.x86_64 kernel-tools-libs-3.10.0-862.el7.x86_64 kernel-3.10.0-1062.7.1.el7.x86_64 kernel-headers-3.10.0-1062.7.1.el7.x86_64 kernel-3.10.0-862.el7.x86_64<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li> 此时查看内核：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">awk -F\<span class="hljs-string">&#x27; &#x27;</span><span class="hljs-variable">$1</span>==<span class="hljs-string">&quot;menuentry &quot;</span> &#123;<span class="hljs-built_in">print</span> i++ <span class="hljs-string">&quot; : &quot;</span> <span class="hljs-variable">$2</span>&#125;<span class="hljs-string">&#x27; /etc/grub2.cfg</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="19-3-一键脚本"><a href="#19-3-一键脚本" class="headerlink" title="19.3 一键脚本"></a>19.3 一键脚本</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">!/bin/bash</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment">############################################################################################</span></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">导入系统变量</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment">############################################################################################</span></span><br>. /etc/init.d/functions<br>source /etc/profile<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment">############################################################################################</span></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">服务变量定义</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment">############################################################################################</span></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">线条</span><br>LINE=&#x27;---------------------------------------------------------------------------------------&#x27;<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">进程用户</span><br>USER_PROCESS=&#x27;root&#x27;<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment">############################################################################################</span></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">颜色输出函数</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment">############################################################################################</span></span><br>function FUNC_COLOR_TEXT() &#123;<br>  echo -e &quot; \e[0;$2m$1\e[0m&quot;<br>&#125;<br><br>function FUNC_ECHO_RED() &#123;<br>  echo $(FUNC_COLOR_TEXT &quot;$1&quot; &quot;31&quot;)<br>&#125;<br><br>function FUNC_ECHO_GREEN() &#123;<br>  echo $(FUNC_COLOR_TEXT &quot;$1&quot; &quot;32&quot;)<br>&#125;<br><br>function FUNC_ECHO_YELLOW() &#123;<br>  echo $(FUNC_COLOR_TEXT &quot;$1&quot; &quot;33&quot;)<br>&#125;<br><br>function FUNC_ECHO_BLUE() &#123;<br>  echo $(FUNC_COLOR_TEXT &quot;$1&quot; &quot;34&quot;)<br>&#125;<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment">############################################################################################</span></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">颜色通知输出函数</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment">############################################################################################</span></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">通知信息</span><br>function FUNC_ECHO_INFO() &#123;<br>  echo $(FUNC_COLOR_TEXT &quot;$&#123;LINE&#125;&quot; &quot;33&quot;)<br>  echo $(FUNC_COLOR_TEXT &quot;$1&quot; &quot;33&quot;)<br>  echo $(FUNC_COLOR_TEXT &quot;$&#123;LINE&#125;&quot; &quot;33&quot;)<br>&#125;<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">完成信息</span><br>function FUNC_ECHO_SUCCESS() &#123;<br>  echo $(FUNC_COLOR_TEXT &quot;$&#123;LINE&#125;&quot; &quot;32&quot;)<br>  echo $(FUNC_COLOR_TEXT &quot;$1&quot; &quot;32&quot;)<br>  echo $(FUNC_COLOR_TEXT &quot;$&#123;LINE&#125;&quot; &quot;32&quot;)<br>&#125;<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">错误信息</span><br>function FUNC_ECHO_ERROR() &#123;<br>  echo $(FUNC_COLOR_TEXT &quot;$&#123;LINE&#125;&quot; &quot;31&quot;)<br>  echo $(FUNC_COLOR_TEXT &quot;$1&quot; &quot;31&quot;)<br>  echo $(FUNC_COLOR_TEXT &quot;$&#123;LINE&#125;&quot; &quot;31&quot;)<br>&#125;<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment">############################################################################################</span></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">系统版本检测函数</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment">############################################################################################</span></span><br>function FUNC_SYSTEM_CHECK() &#123;<br>  VAR_SYSTEM_FLAG=$(/usr/bin/cat /etc/redhat-release | grep &#x27;CentOS&#x27; | grep &#x27;7&#x27; | wc -l)<br>  if [[ $&#123;VAR_SYSTEM_FLAG&#125; -ne 1 ]];then<br>    FUNC_ECHO_ERROR &#x27;本脚本基于 [ CentOS 7 ] 编写，目前暂不支持其他版本系统！&#x27;<br>    exit 1001<br>  fi<br>&#125;<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment">############################################################################################</span></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">用户检测函数</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment">############################################################################################</span></span><br>function FUNC_USER_CHECK() &#123;<br>  VAR_USER=$(/usr/bin/whoami)<br>  if [[ $&#123;VAR_USER&#125; != &#x27;root&#x27; ]];then<br>    FUNC_ECHO_ERROR &#x27;脚本目前只支持 [ root ] 用户执行，请先切换用户...&#x27;<br>    exit 1002<br>  fi<br>&#125;<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment">############################################################################################</span></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">服务器联网函数</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment">############################################################################################</span></span><br>function FUNC_NETWORK_CHECK() &#123;<br>  VAR_PING_NUM=$(/usr/bin/ping -c 3 www.baidu.com | grep &#x27;icmp_seq&#x27; | wc -l)<br>  if [[ $&#123;VAR_PING_NUM&#125; -eq 0 ]];then<br>    FUNC_ECHO_ERROR &#x27;网络连接失败，请先配置好网络连接...&#x27;<br>    exit 1003<br>  fi<br>&#125;<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment">############################################################################################</span></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">打印系统信息</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment">############################################################################################</span></span><br>function FUNC_PRINT_SYSTEM_INFO() &#123;<br><span class="hljs-meta prompt_">  # </span><span class="language-bash">获取系统信息</span><br>  SYSTEM_DATE=$(/usr/bin/date)<br>  SYSTEM_VERSION=$(/usr/bin/cat /etc/redhat-release)<br>  SYSTEM_CPU=$(/usr/bin/cat /proc/cpuinfo | grep &#x27;model name&#x27; | head -1 | awk -F: &#x27;&#123;print $2&#125;&#x27; | sed &#x27;s#^[ \t]*##g&#x27;)<br>  SYSTEM_CPU_NUMS=$(/usr/bin/cat /proc/cpuinfo | grep &#x27;model name&#x27; | wc -l)<br>  SYSTEM_KERNEL=$(/usr/bin/uname -a | awk &#x27;&#123;print $3&#125;&#x27;)<br>  SYSTEM_IPADDR=$(/usr/sbin/ip addr | grep inet | grep -vE &#x27;inet6|127.0.0.1&#x27; | awk &#x27;&#123;print $2&#125;&#x27;)<br>    <br><span class="hljs-meta prompt_">  # </span><span class="language-bash">打印系统信息</span><br>  FUNC_ECHO_YELLOW $&#123;LINE&#125;<br>  echo &quot;服务器的信息: $&#123;SYSTEM_IPADDR&#125;&quot;<br>  FUNC_ECHO_YELLOW $&#123;LINE&#125;<br>  echo &quot;操作系统版本: $&#123;SYSTEM_VERSION&#125;&quot;<br>  echo &quot;系统内核版本: $&#123;SYSTEM_KERNEL&#125;&quot;<br>  echo &quot;处理器的型号: $&#123;SYSTEM_CPU&#125;&quot;<br>  echo &quot;处理器的核数: $&#123;SYSTEM_CPU_NUMS&#125;&quot;<br>  echo &quot;系统当前时间: $&#123;SYSTEM_DATE&#125;&quot;<br>  FUNC_ECHO_YELLOW $&#123;LINE&#125;<br>&#125;<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment">############################################################################################</span></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">升级内核</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment">############################################################################################</span></span><br>function FUNC_UPDATE_KERNEL() &#123;<br>    # 安装 EL 源<br>    rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org<br>    rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm<br><br>    if [[ $? -ne 0 ]];then<br>      FUNC_ECHO_ERROR &quot;EL 源安装失败，请检查是否存在问题！&quot;<br>      exit 1004<br>    fi<br>    <br>    # 查看可提供升级的版本<br>    yum --disablerepo=&quot;*&quot; --enablerepo=&quot;elrepo-kernel&quot; list available<br>    <br>    VAR_KERNEL_NAME=&quot;kernel-lt&quot;<br>    read -p &quot;请输入上面列出的版本中你想安装的版本（默认 lt 版本） [lt/ml]: &quot; VAR_VERSION_CHOICE<br>    if [[ $&#123;VAR_VERSION_CHOICE&#125; == &quot;ml&quot; ]];then<br>        VAR_KERNEL_NAME=&quot;kernel-ml&quot;<br>    fi<br>    <br>    FUNC_ECHO_INFO &quot;本次选择升级的版本为：$&#123;VAR_KERNEL_NAME&#125;&quot;<br>    <br>    # 升级内核<br>    yum --enablerepo=elrepo-kernel install $&#123;VAR_KERNEL_NAME&#125;<br>    <br>    if [[ $? -ne 0 ]];then<br>      FUNC_ECHO_ERROR &quot;内核升级失败，请根据报错检查是否存在问题！&quot;<br>      exit 1005<br>    fi<br>    <br>    # 查看目前版本<br>    FUNC_ECHO_INFO &quot;系统当前所安装的内核版本如下：&quot;<br>    awk -F\&#x27; &#x27;$1==&quot;menuentry &quot; &#123;print i++ &quot; : &quot; $2&#125;&#x27; /etc/grub2.cfg<br>    <br>    # 选择默认内核版本<br>    VAR_NUM_CHOICE=0<br>    read -p &quot;请输入上面列出的版本序号选择系统最终默认版本（默认 0）: &quot; VAR_NUM_CHOICE<br>    if [[ $(echo $&#123;VAR_NUM_CHOICE&#125; | sed &#x27;s/[0-9]//g&#x27;) == &#x27;&#x27; ]];then<br>        if [[ $&#123;VAR_NUM_CHOICE&#125; == &quot;&quot; ]];then<br>            VAR_NUM_CHOICE=0<br>        fi<br>    else<br>        FUNC_ECHO_INFO &quot;输入有误，将以默认配置执行...&quot;<br>        VAR_NUM_CHOICE=0<br>    fi<br>        <br>    <br>    # 配置系统默认<br>    grub2-set-default $&#123;VAR_NUM_CHOICE&#125;<br>    <br>    sed -i &quot;s#^GRUB_DEFAULT=.*#GRUB_DEFAULT=$&#123;VAR_NUM_CHOICE&#125;#g&quot; /etc/default/grub<br>    <br>    if [[ $? -ne 0 ]];then<br>      FUNC_ECHO_ERROR &quot;默认内核配置失败，可以手动配置/etc/default/grub文件中：GRUB_DEFAULT参数为指定内核索引！&quot;<br>    fi<br>&#125;<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment">############################################################################################</span></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">卸载旧版本内核</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment">############################################################################################</span></span><br>function FUNC_UNINSTALL_KERNEL() &#123;<br>    # 显示内核版本<br>    FUNC_ECHO_INFO &quot;系统当前所安装的内核版本如下：&quot;<br>    rpm -qa | grep kernel<br>    <br>    # 提示卸载<br>    FUNC_ECHO_INFO &quot;你可以手动卸载旧版本：yum -y remove 包名字，然后重启使用：uname -r 查看升级结果&quot;<br>&#125;<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment">############################################################################################</span></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">安装程序开始</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment">############################################################################################</span></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">系统检查</span><br>FUNC_SYSTEM_CHECK<br><span class="hljs-meta prompt_"># </span><span class="language-bash">用户检查</span><br>FUNC_USER_CHECK<br><span class="hljs-meta prompt_"># </span><span class="language-bash">联网检测</span><br>FUNC_NETWORK_CHECK<br><span class="hljs-meta prompt_"># </span><span class="language-bash">打印系统信息</span><br>FUNC_PRINT_SYSTEM_INFO<br><br>read -p &quot;是否继续安装升级（默认 y） [y/n]: &quot; VAR_CHOICE<br>case $&#123;VAR_CHOICE&#125; in<br>  [yY][eE][sS]|[yY])<br>    FUNC_UPDATE_KERNEL<br>    FUNC_UNINSTALL_KERNEL<br>  ;;<br>  [nN][oO]|[nN])<br>    FUNC_ECHO_YELLOW &quot;安装升级即将终止...&quot;<br>    exit<br>  ;;<br>  *)<br>    FUNC_UPDATE_KERNEL<br>    FUNC_UNINSTALL_KERNEL<br>esac<br></code></pre></td></tr></table></figure>
+
+<h1 id="20-安装MySQL-8-0-27"><a href="#20-安装MySQL-8-0-27" class="headerlink" title="20. 安装MySQL(8.0.27)"></a>20. 安装MySQL(8.0.27)</h1><p>使用源的方式安装后的mysql, 默认开机自启</p>
+<p>端口号3306 [可以在配置文件中进行修改]</p>
+<p>配置文件路径: [/etc/my.cnf]</p>
+<h2 id="20-1-安装MySQL-8"><a href="#20-1-安装MySQL-8" class="headerlink" title="20.1 安装MySQL 8"></a>20.1 安装MySQL 8</h2><ol>
+<li>配置MySQL 8 安装源</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo rpm -Uvh https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>安装MySQL 8</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo yum --enablerepo=mysql80-community install mysql-community-server<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>提示下载插件是输入 yes或者y  [一路yes到底]</li>
+<li>看到complet(完毕)就是安装完啦</li>
+</ul>
+<ol>
+<li>启动MySQL</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo service mysqld start<br></code></pre></td></tr></table></figure>
+
+<img src="/2023/03/22/%E5%85%B3%E4%BA%8ECentOS-7-6-%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C/1640314094567-b44e4263-6720-47ea-a278-e6e60aa66206.png" srcset="/img/loading.gif" lazyload class="" title="img">
+
+<ol>
+<li>查看MySQL运行状态</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">service mysqld status<br></code></pre></td></tr></table></figure>
+
+<img src="/2023/03/22/%E5%85%B3%E4%BA%8ECentOS-7-6-%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C/1640314133569-ac7bdc32-757a-4d85-a648-684f3a9aeef0.png" srcset="/img/loading.gif" lazyload class="" title="img">
+
+<ol>
+<li>查看root临时密码</li>
+</ol>
+<p>安装完mysql之后, 会有一个默认的临时密码让root账号登陆</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">grep <span class="hljs-string">&quot;A temporary password&quot;</span> /var/log/mysqld.log<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/21909148/1640314221424-69d30621-c942-447a-8c7f-d99cf6906078.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<ol>
+<li>更改临时密码</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash">输入：mysql -uroot -p  或者： mysql -uroot -p<span class="hljs-string">&#x27;密码&#x27;</span><br>登录成功<br>输入：ALTER USER <span class="hljs-string">&#x27;root&#x27;</span>@<span class="hljs-string">&#x27;localhost&#x27;</span> IDENTIFIED BY <span class="hljs-string">&#x27;新密码&#x27;</span>;<br>  会提示：ERROR 1819 (HY000): Your password does not satisfy the current policy requirements(密码不符合当前策略)<br><br>设置符合策略的密码(大小写字母+数据+符号)<br>       比如：ALTER USER <span class="hljs-string">&#x27;root&#x27;</span>@<span class="hljs-string">&#x27;localhost&#x27;</span> IDENTIFIED BY <span class="hljs-string">&#x27;ROOTmm123456*&#x27;</span>;<br>       ALTER USER <span class="hljs-string">&#x27;root&#x27;</span>@<span class="hljs-string">&#x27;localhost&#x27;</span> IDENTIFIED WITH mysql_native_password BY <span class="hljs-string">&#x27;ROOTmm123456*&#x27;</span>;<br>root@localhost:是本地连接<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>创建用户设置远程访问，root@%是远程连接</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 开启本地访问</span><br>mysql&gt; grant all privileges on *.* to root@<span class="hljs-string">&quot;localhost&quot;</span> identified by <span class="hljs-string">&quot;密码&quot;</span>;<br><br><span class="hljs-comment"># 开启远程访问</span><br>mysql&gt; UPDATE user SET host = <span class="hljs-string">&#x27;%&#x27;</span> WHERE user =<span class="hljs-string">&#x27;root; # mysql 8.0</span><br><span class="hljs-string">mysql&gt; flush privileges; # 刷新MySQL的系统权限相关表</span><br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>mysql基本操作指令</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 启动服务</span><br>service mysqld start / systemctl start mysqld<br><span class="hljs-comment"># 停止服务</span><br>service mysqld stop / systemctl stop mysqld<br><span class="hljs-comment"># 重启服务</span><br>service mysqld restart / systemctl restart mysqld<br><span class="hljs-comment"># 查看服务状态</span><br>service mysqld status / systemctl status mysqld<br></code></pre></td></tr></table></figure>
+
+<h2 id="20-2-卸载MySQL-8"><a href="#20-2-卸载MySQL-8" class="headerlink" title="20.2 卸载MySQL 8"></a>20.2 卸载MySQL 8</h2><ol>
+<li>查看是否有安装过MySQL</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">rpm -qa | grep -i mysql<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>删除MySQL</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum -y remove MySQL-*<br>或者<br>yum -y remove mysql80-*<br></code></pre></td></tr></table></figure>
+
+<p>一般用rpm -e 的命令删除mysql,这样表面上删除了mysql,可是mysql的一些残余程序仍然存在,并且通过第一步的方式也查找不到残余,而yum命令比较强大,可以完全删除mysql.(ps:用rpm删除后再次安装的时候会提示已经安装了,这就是rpm没删除干净的原因)</p>
+<ol>
+<li>把所有出现的目录都删除</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">find / -name mysql<br><span class="hljs-comment"># 查找mysql的一些目录, 把所有出现的目录都删除; 可以使用 rm -rf [文件夹路径]</span><br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>删除配置文件</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">rm</span> -rf /etc/my.cnf<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>删除MySQL的默认密码</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">rm -rf /root/.mysql_sercret<br><span class="hljs-meta prompt_"># </span><span class="language-bash">删除mysql的默认密码, 如果不删除, 以后安装mysql这个sercret中的默认密码就不会改变, 使用其中的默认密码可能会错线一些密码错误的问题.</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="20-3-修改密码策略"><a href="#20-3-修改密码策略" class="headerlink" title="20.3 修改密码策略"></a>20.3 修改密码策略</h2><ol>
+<li>查看MySQL密码策略</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SHOW</span> VARIABLES <span class="hljs-keyword">LIKE</span> <span class="hljs-string">&#x27;validate_password.%&#x27;</span>;<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>策略说明</li>
+</ol>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs markdown">validate<span class="hljs-emphasis">_password.length 是密码的最小长度，默认是8，我们把它改成6</span><br><span class="hljs-emphasis">输入：set global validate_</span>password.length=6;<br>validate<span class="hljs-emphasis">_password.policy 验证密码的复杂程度，我们把它改成0</span><br><span class="hljs-emphasis">输入：set global validate_</span>password.policy=0;<br>validate<span class="hljs-emphasis">_password.check_</span>user<span class="hljs-emphasis">_name 用户名检查，用户名和密码不能相同，我们也把它关掉</span><br><span class="hljs-emphasis">输入：set global validate_</span>password.check<span class="hljs-emphasis">_user_</span>name=off;<br></code></pre></td></tr></table></figure>
+
+<h2 id="20-4-添加用户"><a href="#20-4-添加用户" class="headerlink" title="20.4 添加用户"></a>20.4 添加用户</h2><ol>
+<li>创建用户</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">user</span> <span class="hljs-string">&#x27;saotolls&#x27;</span>@<span class="hljs-string">&#x27;%&#x27;</span> identified <span class="hljs-keyword">by</span> <span class="hljs-string">&#x27;Saotolls%Inc@Nb&#x27;</span>;<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>修改用户加密规则</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">USER</span> <span class="hljs-string">&#x27;saotolls&#x27;</span>@<span class="hljs-string">&#x27;%&#x27;</span> IDENTIFIED  <span class="hljs-keyword">WITH</span> mysql_native_password <span class="hljs-keyword">BY</span> <span class="hljs-string">&#x27;Saotolls%Inc@Nb&#x27;</span>;<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>刷新</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">FLUSH PRIVILEGES;<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>查看是否修改成功</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> host, <span class="hljs-keyword">user</span>, authentication_string, plugin <span class="hljs-keyword">from</span> <span class="hljs-keyword">user</span>;<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>赋予权限配置远程访问</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">grant</span> <span class="hljs-keyword">all</span> privileges <span class="hljs-keyword">on</span> <span class="hljs-operator">*</span>.<span class="hljs-operator">*</span> <span class="hljs-keyword">to</span> <span class="hljs-string">&#x27;saotolls&#x27;</span>@<span class="hljs-string">&#x27;%&#x27;</span>;<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>重启mysql服务</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">serivce mysqld start/stop<br></code></pre></td></tr></table></figure>
+
+<h2 id="20-5-删除用户"><a href="#20-5-删除用户" class="headerlink" title="20.5 删除用户"></a>20.5 删除用户</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">DROP</span> <span class="hljs-keyword">USER</span> <span class="hljs-string">&#x27;saotolls&#x27;</span>@<span class="hljs-string">&#x27;%&#x27;</span>;<br></code></pre></td></tr></table></figure>
+
+<h2 id="20-6-MySQL配置文件详解-来源腾讯云文档库"><a href="#20-6-MySQL配置文件详解-来源腾讯云文档库" class="headerlink" title="20.6 MySQL配置文件详解 [来源腾讯云文档库]"></a>20.6 MySQL配置文件详解 [来源腾讯云文档库]</h2><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-comment">#以下选项会被MySQL客户端应用读取。注意只有MySQL附带的客户端应用程序保证可以读取这段内容。如果你想你自己的MySQL应用程序获取这些值。需要在MySQL客户端库初始化的时候指定这些选项。</span><br><span class="hljs-attr">[client]</span><br><span class="hljs-attr">port</span> = <span class="hljs-string">3309</span><br><span class="hljs-attr">socket</span> =  <span class="hljs-string">/usr/local/mysql/tmp/mysql.sock</span><br><span class="hljs-attr">[mysqld]</span> <span class="hljs-string">#服务器端配置</span><br><span class="hljs-comment">!include  /usr/local/mysql/etc/mysqld.cnf  #包含的配置文件，可以把用户名和密码文件单独存放</span><br><span class="hljs-attr">port</span> = <span class="hljs-string">3306　　#监听端口　　</span><br><span class="hljs-attr">bind-address</span> = <span class="hljs-string">0.0.0.0　　#监听的ip地址</span><br><span class="hljs-attr">server-id</span> = <span class="hljs-string">1　　#MySQL服务的ID</span><br><span class="hljs-attr">socket</span> =  <span class="hljs-string">/usr/local/mysql/tmp/mysql.sock　　#socket通信设置</span><br><span class="hljs-attr">pid-file</span> =  <span class="hljs-string">/usr/local/mysql/var/mysql.pid　 #pid文件路径</span><br><span class="hljs-attr">basedir</span> =  <span class="hljs-string">/usr/local/mysql/　　　　　　　　　　#MySQL程序路径</span><br><span class="hljs-attr">datadir</span> =  <span class="hljs-string">/usr/local/mysql/data　　　　　　　 #数据目录</span><br><span class="hljs-attr">tmpdir</span> =  <span class="hljs-string">/usr/local/mysql/tmp/ </span><br><span class="hljs-comment">#此目录被 MySQL用来保存临时文件.例如,它被用来处理基于磁盘的大型排序,和内部排序一样，以及简单的临时表.如果你不创建非常大的临时文件,将其放置到 swapfs/tmpfs 文件系统上也许比较好。另一种选择是你也可以将其放置在独立的磁盘上.你可以使用”;”来放置多个路径，他们会按照 roud-robin 方法被轮询使用.</span><br><br><span class="hljs-attr">slave-load-tmpdir</span> =  <span class="hljs-string">/usr/local/mysql/tmp/  #当slave执行load data infile时使用</span><br><span class="hljs-comment">#*** skip options 相关选项 ***#</span><br><span class="hljs-attr">skip-name-resolve</span> <span class="hljs-string"></span><br><span class="hljs-comment">#禁止 MySQL 对外部连接进行 DNS 解析，使用这一选项可以消除 MySQL 进行 DNS 解析的时间。但需要注意，如果开启该选项，则所有远程主机连接授权都要使用 IP 地址方式，否则 MySQL 将无法正常处理连接请求！</span><br><span class="hljs-attr">skip-symbolic-links</span> <span class="hljs-string"></span><br><span class="hljs-comment">#不能使用连接文件，多个客户可能会访问同一个数据库，因此这防止外部客户锁定 MySQL 服务器。 该选项默认开启</span><br><br><span class="hljs-attr">skip-external-locking</span> <span class="hljs-string"></span><br><span class="hljs-comment">#不使用系统锁定，要使用 myisamchk,必须关闭服务器 ,避免 MySQL的外部锁定，减少出错几率增强稳定性。</span><br><br><span class="hljs-attr">skip-slave-start</span> <span class="hljs-string"></span><br><span class="hljs-comment">#启动 mysql,不启动复制</span><br><br><span class="hljs-attr">skip-networking</span> <span class="hljs-string"></span><br><span class="hljs-comment">#开启该选项可以彻底关闭 MySQL 的 TCP/IP 连接方式，如果 WEB 服务器是以远程连接的方式访问 MySQL 数据库服务器则不要开启该选项！否则将无法正常连接！ 如果所有的进程都是在同一台服务器连接到本地的 mysqld, 这样设置将是增强安全的方法</span><br><br><span class="hljs-attr">sysdate-is-now</span> = <span class="hljs-string">1 </span><br><span class="hljs-comment">#把SYSDATE 函数编程为 NOW的别名</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">#*** 系统资源相关选项 ***#</span><br><span class="hljs-attr">back_log</span> = <span class="hljs-string">50 </span><br><span class="hljs-comment">#接受队列，对于没建立 tcp 连接的请求队列放入缓存中，队列大小为 back_log，受限制与 OS 参数，试图设定 back_log 高于你的操作系统的限制将是无效的。默认值为 50。对于 Linux 系统推荐设置为小于512的整数。如果系统在一个短时间内有很多连接，则需要增大该参数的值</span><br><br><span class="hljs-attr">max_connections</span> = <span class="hljs-string">1000 </span><br><span class="hljs-comment">#指定MySQL允许的最大连接进程数。如果在访问数据库时经常出现&quot;Too Many Connections&quot;的错误提 示，则需要增大该参数值。</span><br><br><span class="hljs-attr">max_connect_errors</span> = <span class="hljs-string">10000 </span><br><span class="hljs-comment">#如果某个用户发起的连接 error 超过该数值，则该用户的下次连接将被阻塞，直到管理员执行 flush hosts ; 命令或者服务重启， 防止黑客 ， 非法的密码以及其他在链接时的错误会增加此值</span><br><br><span class="hljs-attr">open_files_limit</span> = <span class="hljs-string">10240 </span><br><span class="hljs-comment">#MySQL打开的文件描述符限制，默认最小1024;当open_files_limit没有被配置的时候，比较max_connections*5和ulimit-n的值，哪个大用哪个，当open_file_limit被配置的时候，比较open_files_limit和max_connections*5的值，哪个大用哪个。</span><br><br><span class="hljs-attr">connect-timeout</span> = <span class="hljs-string">10 </span><br><span class="hljs-comment">#连接超时之前的最大秒数,在 Linux 平台上，该超时也用作等待服务器首次回应的时间</span><br><br><span class="hljs-attr">wait-timeout</span> = <span class="hljs-string">28800 </span><br><span class="hljs-comment">#等待关闭连接的时间</span><br><br><span class="hljs-attr">interactive-timeout</span> = <span class="hljs-string">28800 </span><br><span class="hljs-comment">#关闭连接之前，允许 interactive_timeout（取代了wait_timeout）秒的不活动时间。客户端的会话 wait_timeout 变量被设为会话interactive_timeout 变量的值。如果前端程序采用短连接，建议缩短这2个值, 如果前端程序采用长连接，可直接注释掉这两个选项，默认配置(8小时)  </span><br><br><span class="hljs-attr">slave-net-timeout</span> = <span class="hljs-string">600 </span><br><span class="hljs-comment">#从服务器也能够处理网络连接中断。但是，只有从服务器超过slave_net_timeout 秒没有从主服务器收到数据才通知网络中断</span><br><br><span class="hljs-attr">net_read_timeout</span> = <span class="hljs-string">30 </span><br><span class="hljs-comment">#从服务器读取信息的超时</span><br><br><span class="hljs-attr">net_write_timeout</span> = <span class="hljs-string">60 </span><br><span class="hljs-comment">#从服务器写入信息的超时</span><br><br><span class="hljs-attr">net_retry_count</span> = <span class="hljs-string">10 </span><br><span class="hljs-comment">#如果某个通信端口的读操作中断了，在放弃前重试多次</span><br><br><span class="hljs-attr">net_buffer_length</span> = <span class="hljs-string">16384 </span><br><span class="hljs-comment">#包消息缓冲区初始化为 net_buffer_length 字节，但需要时可以增长到 max_allowed_packet 字节</span><br><br><span class="hljs-attr">max_allowed_packet</span> = <span class="hljs-string">64M</span><br><span class="hljs-comment"># 服务所能处理的请求包的最大大小以及服务所能处理的最大的请求大小(当与大的BLOB 字段一起工作时相当必要)， 每个连接独立的大小.大小动态增加。 设置最大包,限制server接受的数据包大小，避免超长SQL的执行有问题 默认值为16M，当MySQL客户端或mysqld</span><br><span class="hljs-attr">服务器收到大于</span> <span class="hljs-string">max_allowed_packet 字节的信息包时，将发出“信息包过大”错误，并关闭连接。对于某些客户端，如果通信信息包过大，在执行查询期间，可能会遇到“丢失与 MySQL 服务器的连接”错误。默认值 16M。</span><br><br><span class="hljs-attr">table_cache</span> = <span class="hljs-string">512 </span><br><span class="hljs-comment"># 所有线程所打开表的数量. 增加此值就增加了mysqld所需要的文件描述符的数量这样你需要确认在[mysqld_safe]中 “open-files-limit” 变量设置打开文件数量允许至少4096</span><br><br><span class="hljs-attr">thread_stack</span> = <span class="hljs-string">192K </span><br><span class="hljs-comment"># 线程使用的堆大小. 此容量的内存在每次连接时被预留.MySQL 本身常不会需要超过 64K 的内存如果你使用你自己的需要大量堆的 UDF 函数或者你的操作系统对于某些操作需要更多的堆,你也许需要将其设置的更高一点.默认设置足以满足大多数应用</span><br><br><span class="hljs-attr">thread_cache_size</span> = <span class="hljs-string">20 </span><br><span class="hljs-comment"># 我们在 cache 中保留多少线程用于重用.当一个客户端断开连接后,如果 cache 中的线程还少于 thread_cache_size,则客户端线程被放入 cache 中.这可以在你需要大量新连接的时候极大的减少线程创建的开销(一般来说如果你有好的线程模型的话,</span><br><span class="hljs-attr">这不会有明显的性能提升.)服务器线程缓存这个值表示可以重新利用保存在缓存中线程的数量,当断开连接时如果缓存中还有空间,那么客户端的线程将被放到缓存中,如果线程重新被请求，那么请求将从缓存中读取,如果缓存中是空的或者是新的请求，那么这个线程将被重新创建,</span><br><span class="hljs-attr">如果有很多新的线程，增加这个值可以改善系统性能.通过比较</span> <span class="hljs-string">Connections 和 Threads_created 状态的变量，可以看到这个变量的作用</span><br><span class="hljs-attr">根据物理内存设置规则如下：</span><br><span class="hljs-attr">1G</span>  <span class="hljs-string">—&gt; 8</span><br><span class="hljs-attr">2G</span>  <span class="hljs-string">—&gt; 16</span><br><span class="hljs-attr">3G</span>  <span class="hljs-string">—&gt; 32</span><br><span class="hljs-attr">大于3G</span>  <span class="hljs-string">—&gt; 64</span><br><br><span class="hljs-attr">thread_concurrency</span> = <span class="hljs-string">8 </span><br><span class="hljs-comment">#此允许应用程序给予线程系统一个提示在同一时间给予渴望被运行的线程的数量.该参数取值为服务器逻辑CPU数量×2，在本例中，服务器有 2 颗物理CPU，而每颗物理CPU又支持H.T超线程，所以实际取值为 4 × 2 ＝ 8.设置 thread_concurrency的值的正确与否, </span><br><span class="hljs-attr">对</span> <span class="hljs-string">mysql 的性能影响很大, 在多个 cpu(或多核)的情况下，错误设置了 thread_concurrency 的值, 会导致 mysql 不能充分利用多 cpu(或多核),出现同一时刻只能一个 cpu(或核)在工作的情况。 thread_concurrency 应设为 CPU 核数的 2 倍.比如有一个双核的 CPU, </span><br><span class="hljs-attr">那么</span> <span class="hljs-string">thread_concurrency 的应该为 4; 2 个双核的 cpu,thread_concurrency 的值应为 8,属重点优化参数</span><br><span class="hljs-comment"> </span><br><span class="hljs-comment"> </span><br><span class="hljs-comment">#*** qcache settings 相关选项 ***#</span><br><span class="hljs-attr">query_cache_limit</span> = <span class="hljs-string">2M </span><br><span class="hljs-comment">#不缓存查询大于该值的结果.只有小于此设定值的结果才会被缓冲,  此设置用来保护查询缓冲,防止一个极大的结果集将其他所有的查询结果都覆盖.</span><br><br><span class="hljs-attr">query_cache_min_res_unit</span> = <span class="hljs-string">2K </span><br><span class="hljs-comment">#查询缓存分配的最小块大小.默认是 4KB，设置值大对大数据查询有好处，但如果你的查询都是小数据查询，就容易造成内存碎片和浪费</span><br><span class="hljs-attr">查询缓存碎片率</span> = <span class="hljs-string">Qcache_free_blocks / Qcache_total_blocks * 100%</span><br><span class="hljs-attr">如果查询缓存碎片率超过</span> <span class="hljs-string">20%，可以用 FLUSH QUERY CACHE 整理缓存碎片，或者试试减小query_cache_min_res_unit，如果你的查询都是小数据量的话。</span><br><span class="hljs-attr">查询缓存利用率</span> = <span class="hljs-string">(query_cache_size – Qcache_free_memory) / query_cache_size *100%</span><br><span class="hljs-attr">查询缓存利用率在</span> <span class="hljs-string">25%以下的话说明 query_cache_size 设置的过大，可适当减小;查询缓存利用率在 80%以上而且 Qcache_lowmem_prunes &gt; 50 的话说明 query_cache_size 可能有点小，要不就是碎片太多。</span><br><span class="hljs-attr">查询缓存命中率</span> = <span class="hljs-string">(Qcache_hits – Qcache_inserts) / Qcache_hits * 100%</span><br><br><span class="hljs-attr">query_cache_size</span> = <span class="hljs-string">64M  </span><br><span class="hljs-comment">#指定 MySQL 查询缓冲区的大小。可以通过在 MySQL 控制台执行以下命令观察：</span><br><span class="hljs-attr">代码</span>:<span class="hljs-string"></span><br><span class="hljs-attr">&gt;</span> <span class="hljs-string">SHOW VARIABLES LIKE &#x27;%query_cache%&#x27;;</span><br><span class="hljs-attr">&gt;</span> <span class="hljs-string">SHOW STATUS LIKE &#x27;Qcache%&#x27;;如果 Qcache_lowmem_prunes 的值非常大，则表明经常出现缓冲不够的情况；</span><br><span class="hljs-attr">如果</span> <span class="hljs-string">Qcache_hits 的值非常大，则表明查询缓冲使用非常频繁，如果该值较小反而会影响效率，那么可以考虑不用查询缓冲； Qcache_free_blocks，如果该值非常大，则表明缓冲区中碎片很多。</span><br><span class="hljs-attr">memlock</span> <span class="hljs-string"># 如果你的系统支持 memlock() 函数,你也许希望打开此选项用以让运行中的 mysql 在在内存高度</span><br><span class="hljs-attr">紧张的时候,数据在内存中保持锁定并且防止可能被</span> <span class="hljs-string">swapping out,此选项对于性能有益</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">#*** default settings 相关选项 ***#</span><br><span class="hljs-attr">default_table_type</span> = <span class="hljs-string">InnoDB </span><br><span class="hljs-comment"># 当创建新表时作为默认使用的表类型,如果在创建表示没有特别执行表类型,将会使用此值</span><br><br><span class="hljs-attr">default-time-zone</span> = <span class="hljs-string">system </span><br><span class="hljs-comment">#服务器时区</span><br><br><span class="hljs-attr">character-set-server</span> = <span class="hljs-string">utf8 </span><br><span class="hljs-comment">#server 级别字符集</span><br><br><span class="hljs-attr">default-storage-engine</span> = <span class="hljs-string">InnoDB </span><br><span class="hljs-comment">#默认存储引擎</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">#*** tmp &amp;&amp; heap settings 相关选项 ***#</span><br><span class="hljs-attr">tmp_table_size</span> = <span class="hljs-string">512M </span><br><span class="hljs-comment">#临时表的最大大小，如果超过该值，则结果放到磁盘中,此限制是针对单个表的,而不是总和.</span><br><br><span class="hljs-attr">max_heap_table_size</span> = <span class="hljs-string">512M </span><br><span class="hljs-comment">#独立的内存表所允许的最大容量.此选项为了防止意外创建一个超大的内存表导致永尽所有的内存资源.</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">#*** log settings 相关选项 ***#</span><br><span class="hljs-attr">log-bin</span> = <span class="hljs-string">mysql-bin </span><br><span class="hljs-comment">#打开二进制日志功能.在复制(replication)配置中,作为 MASTER 主服务器必须打开此项.如果你需要从你最后的备份中做基于时间点的恢复,你也同样需要二进制日志.这些路径相对于 datadir</span><br><br><span class="hljs-attr">log_slave_updates</span> = <span class="hljs-string">1 </span><br><span class="hljs-comment">#表示slave将复制事件写进自己的二进制日志</span><br><br><span class="hljs-attr">log-bin-index</span> = <span class="hljs-string">mysql-bin.index </span><br><span class="hljs-comment">#二进制的索引文件名</span><br><br><span class="hljs-attr">relay-log</span> = <span class="hljs-string">relay-log </span><br><span class="hljs-comment">#定义relay_log的位置和名称，如果值为空，则默认位置在数据文件的目录，文件名为host_name-relay-bin.nnnnnn（By default, relay log file names have the form host_name-relay-bin.nnnnnn in the data directory）；</span><br><br><span class="hljs-attr">relay_log_index</span> = <span class="hljs-string">relay-log.index  </span><br><span class="hljs-comment">#relay-log的索引文件名</span><br><br><span class="hljs-attr">log-warnings</span> = <span class="hljs-string">1 </span><br><span class="hljs-comment"># 将警告打印输出到错误 log 文件.如果你对于MySQL有任何问题，你应该打开警告 log 并且仔细审查错误日志,查出可能的原因.</span><br><br><span class="hljs-attr">log-error</span> =  <span class="hljs-string">/usr/local/mysql/log/mysql.err </span><br><span class="hljs-comment">#错误日志路径</span><br><br><span class="hljs-attr">log_output</span> = <span class="hljs-string">FILE </span><br><span class="hljs-comment">#参数 log_output 指定了慢查询输出的格式，默认为 FILE，你可以将它设为 TABLE，然后就可以查询 mysql 架构下的 slow_log 表了</span><br><br><span class="hljs-attr">log_slow_queries</span> <span class="hljs-string"></span><br><span class="hljs-comment">#指定是否开启慢查询日志(该参数要被slow_query_log取代，做兼容性保留)</span><br><br><span class="hljs-attr">slow_query_log</span> = <span class="hljs-string">1 </span><br><span class="hljs-comment"># 指定是否开启慢查询日志. 慢查询是指消耗了比 “long_query_time” 定义的更多时间的查询.如果 log_long_format 被打开,那些没有使用索引的查询也会被记录.如果你经常增加新查询到已有的系统内的话. 一般来说这是一个好主意,</span><br><br><span class="hljs-attr">long-query-time</span> = <span class="hljs-string">1 </span><br><span class="hljs-comment">#设定慢查询的阀值，超出次设定值的SQL即被记录到慢查询日志，缺省值为10s.所有的使用了比这个时间(以秒为单位)更多的查询会被认为是慢速查询.不要在这里使用”1″, 否则会导致所有的查询,甚至非常快的查询页被记录下来(由于MySQL 目前时间的精确度只能达到秒的级别).</span><br><br><span class="hljs-attr">log_long_format</span> <span class="hljs-string"></span><br><span class="hljs-comment"># 在慢速日志中记录更多的信息.一般此项最好打开，打开此项会记录使得那些没有使用索引的查询也被作为到慢速查询附加到慢速日志里</span><br><br><span class="hljs-attr">slow_query_log_file</span> =  <span class="hljs-string">/usr/local/mysql/log/slow.log </span><br><span class="hljs-comment"># 指定慢日志文件存放位置，可以为空，系统会给一个缺省的文件host_name-slow.log</span><br><br><span class="hljs-attr">log-queries-not-using-indexes</span> <span class="hljs-string"></span><br><span class="hljs-comment">#如果运行的SQL语句没有使用索引，则mysql数据库同样会将这条SQL语句记录到慢查询日志文件中。</span><br><br><span class="hljs-attr">min_examined_row_limit</span>=<span class="hljs-string">1000　　　　</span><br><span class="hljs-comment">#记录那些由于查找了多余1000次而引发的慢查询</span><br><br><span class="hljs-attr">long-slow-admin-statements　　　　</span><br><span class="hljs-comment">#记录那些慢的optimize table，analyze table和alter table语句</span><br><br><span class="hljs-attr">log-slow-slave-statements</span> <span class="hljs-string"></span><br><span class="hljs-comment">#记录由Slave所产生的慢查询</span><br><br><span class="hljs-attr">general_log</span> = <span class="hljs-string">1 </span><br><span class="hljs-comment">#将所有到达MySQL Server的SQL语句记录下来,默认关闭 </span><br><br><span class="hljs-attr">general_log_file</span> =  <span class="hljs-string">/usr/local/mysql/log/mysql.log </span><br><span class="hljs-comment">#general_log路径</span><br><br><span class="hljs-attr">max_binlog_size</span> = <span class="hljs-string">1G </span><br><span class="hljs-comment">#如果二进制日志写入的内容超出给定值，日志就会发生滚动。你不能将该变量设置为大于1GB或小于4096字节。 默认值是1GB。如果你正使用大的事务，二进制日志还会超过max_binlog_size</span><br><br><span class="hljs-attr">max_relay_log_size</span> = <span class="hljs-string">1G </span><br><span class="hljs-comment">#标记relaylog允许的最大值，如果该值为0，则默认值为max_binlog_size(1G)；如果不为0，则max_relay_log_size则为最大的relay_log文件大小；</span><br><br><span class="hljs-attr">relay-log-purge</span> = <span class="hljs-string">1 </span><br><span class="hljs-comment">#是否自动清空不再需要中继日志时。默认值为1(启用)</span><br><br><span class="hljs-attr">expire_logs_days</span> = <span class="hljs-string">30 </span><br><span class="hljs-comment">#超过 30 天的 binlog 删除</span><br><br><span class="hljs-attr">binlog_cache_size</span> = <span class="hljs-string">1M </span><br><span class="hljs-comment"># 在一个事务中 binlog 为了记录 SQL 状态所持有的 cache 大小,如果你经常使用大的,多声明的事务,你可以增加此值来获取更大的性能.所有从事务来的状态都将被缓冲在 binlog 缓冲中然后在提交后一次性写入到 binlog 中,如果事务比此值大, 会使用磁盘上的临时文件来替代.此缓冲在每个连接的事务第一次更新状态时被创建.session 级别</span><br><br><span class="hljs-attr">replicate-wild-ignore-table</span> = <span class="hljs-string">mysql.% </span><br><span class="hljs-comment">#复制时忽略数据库及表</span><br><span class="hljs-attr">slave_skip_errors</span>=<span class="hljs-string">all </span><br><span class="hljs-comment">#定义复制过程中从服务器可以自动跳过的错误号，当复制过程中遇到定义的错误号，就可以自动跳过，直接执行后面的SQL语句。</span><br><span class="hljs-attr">slave_skip_errors选项有四个可用值，分别为：off，all，ErorCode，ddl_exist_errors。</span><br>  <span class="hljs-attr">默认情况下该参数值是off，我们可以列出具体的error</span> <span class="hljs-string">code，也可以选择all，mysql5.6及MySQL Cluster NDB 7.3以及后续版本增加了参数ddl_exist_errors，该参数包含一系列error code（1007,1008,1050,1051,1054,1060,1061,1068,1094,1146）</span><br>    <span class="hljs-attr">一些error</span> <span class="hljs-string">code代表的错误如下：</span><br>    <span class="hljs-attr">1007：数据库已存在，创建数据库失败</span><br>    <span class="hljs-attr">1008：数据库不存在，删除数据库失败</span><br>    <span class="hljs-attr">1050：数据表已存在，创建数据表失败</span><br>    <span class="hljs-attr">1051：数据表不存在，删除数据表失败</span><br>    <span class="hljs-attr">1054：字段不存在，或程序文件跟数据库有冲突</span><br>    <span class="hljs-attr">1060：字段重复，导致无法插入</span><br>    <span class="hljs-attr">1061：重复键名</span><br>    <span class="hljs-attr">1068：定义了多个主键</span><br>    <span class="hljs-attr">1094：位置线程ID</span><br>    <span class="hljs-attr">1146：数据表缺失，请恢复数据库</span><br>    <span class="hljs-attr">1053：复制过程中主服务器宕机</span><br>    <span class="hljs-attr">1062：主键冲突</span> <span class="hljs-string">Duplicate entry &#x27;%s&#x27; for key %d</span><br><span class="hljs-comment">    </span><br><span class="hljs-comment">    </span><br><span class="hljs-comment">#*** MyISAM 相关选项 ***#</span><br><span class="hljs-attr">key_buffer_size</span> = <span class="hljs-string">256M </span><br><span class="hljs-comment">#指定用于索引的缓冲区大小，增加它可得到更好的索引处理性能。如果是以InnoDB引擎为主的DB，专用于MyISAM引擎的 key_buffer_size 可以设置较小，8MB 已足够  如果是以MyISAM引擎为主，可设置较大，但不能超过4G. 在这里，强烈建议不使用MyISAM引擎，默认都是用InnoDB引擎.注意：该参数值设置的过大反而会是服务器整体效率降低！</span><br><br><span class="hljs-attr">sort_buffer_size</span> = <span class="hljs-string">2M </span><br><span class="hljs-comment">#查询排序时所能使用的缓冲区大小。排序缓冲被用来处理类似 ORDER BY 以及 GROUP BY 队列所引起的排序.一个用来替代的基于磁盘的合并分类会被使用.查看 “Sort_merge_passes” 状态变量. 在排序发生时由每个线程分配 注意：该参数对应的分配内存是每连接独占！如果有 100 个连接，那么实际分配的总共排序缓冲区大小为 100 × 6 ＝600MB,所以,对于内存在 4GB 左右的服务器推荐设置为 6-8M。 </span><br><br><span class="hljs-attr">read_buffer_size</span> = <span class="hljs-string">2M </span><br><span class="hljs-comment">#读查询操作所能使用的缓冲区大小。和 sort_buffer_size 一样，该参数对应的分配内存也是每连接独享！用来做 MyISAM 表全表扫描的缓冲大小.当全表扫描需要时,在对应线程中分配.</span><br><br><span class="hljs-attr">join_buffer_size</span> = <span class="hljs-string">8M </span><br><span class="hljs-comment">#联合查询操作所能使用的缓冲区大小，和 sort_buffer_size 一样，该参数对应的分配内存也是每连接独享!此缓冲被使用来优化全联合(full JOINs 不带索引的联合).类似的联合在极大多数情况下有非常糟糕的性能表现, 但是将此值设大能够减轻性能影响.通过 “Select_full_join”状态变量查看全联合的数量， 当全联合发生时,在每个线程中分配。</span><br><br><span class="hljs-attr">read_rnd_buffer_size</span> = <span class="hljs-string">8M </span><br><span class="hljs-comment">#MyISAM 以索引扫描(Random Scan)方式扫描数据的 buffer大小 </span><br><br><span class="hljs-attr">bulk_insert_buffer_size</span> = <span class="hljs-string">64M </span><br><span class="hljs-comment">#MyISAM 使用特殊的类似树的 cache 来使得突发插入(这些插入是,INSERT … SELECT, INSERT … VALUES (…), (…), …, 以及 LOAD DATAINFILE) 更快. 此变量限制每个进程中缓冲树的字节数.设置为 0 会关闭此优化.为了最优化不要将此值设置大于 “key_buffer_size”.当突发插入被检测到时此缓冲将被分配MyISAM 用在块插入优化中的树缓冲区的大小。注释：这是一个 per thread 的限制 （ bulk 大量）.此缓冲当 MySQL 需要在 REPAIR, OPTIMIZE, ALTER 以及 LOAD DATA INFILE到一个空表中引起重建索引时被分配.这在每个线程中被分配.所以在设置大值时需要小心.</span><br><br><span class="hljs-attr">myisam_sort_buffer_size</span> = <span class="hljs-string">64M </span><br><span class="hljs-comment">#MyISAM 设置恢复表之时使用的缓冲区的尺寸,当在REPAIR TABLE 或用 CREATE INDEX 创建索引或 ALTER TABLE 过程中排序 MyISAM 索引分配的缓冲区</span><br><br><span class="hljs-attr">myisam_max_sort_file_size</span> = <span class="hljs-string">10G</span><br><span class="hljs-comment">#mysql重建索引时允许使用的临时文件最大大小</span><br><br><span class="hljs-attr">myisam_repair_threads</span> = <span class="hljs-string">1 </span><br><span class="hljs-comment">#如果该值大于 1，在 Repair by sorting 过程中并行创建MyISAM 表索引(每个索引在自己的线程内).如果一个表拥有超过一个索引, MyISAM 可以通过并行排序使用超过一个线程去修复他们.这对于拥有多个 CPU 以及大量内存情况的用户,是一个很好的选择.</span><br><br><span class="hljs-attr">myisam_recover</span> = <span class="hljs-string">64K</span><br><span class="hljs-comment">#允许的 GROUP_CONCAT()函数结果的最大长度</span><br><span class="hljs-attr">transaction_isolation</span> = <span class="hljs-string">REPEATABLE-READ # 设定默认的事务隔离级别.可用的级别如下:READ-UNCOMMITTED, READ-COMMITTED, REPEATABLE-READ,SERIALIZABLE</span><br><span class="hljs-attr">1.READ</span> <span class="hljs-string">UNCOMMITTED-读未提交 2.READ COMMITTE-读已提交 3.REPEATABLE READ -可重复读 4.SERIALIZABLE -串行</span><br><span class="hljs-comment"></span><br><span class="hljs-comment"></span><br><span class="hljs-comment"># *** INNODB 相关选项 ***#</span><br><span class="hljs-attr">skip-innodb</span> <span class="hljs-string"></span><br><span class="hljs-comment"># 如果你的 MySQL 服务包含 InnoDB 支持但是并不打算使用的话,使用此选项会节省内存以及磁盘空间,并且加速某些部分</span><br><br><span class="hljs-attr">innodb_file_per_table</span> = <span class="hljs-string">1 </span><br><span class="hljs-comment"># InnoDB为独立表空间模式，每个数据库的每个表都会生成一个数据空间</span><br><span class="hljs-attr">独立表空间优点：</span><br><span class="hljs-attr">1．每个表都有自已独立的表空间。</span><br><span class="hljs-attr">2．每个表的数据和索引都会存在自已的表空间中。</span><br><span class="hljs-attr">3．可以实现单表在不同的数据库中移动。</span><br><span class="hljs-attr">4．空间可以回收（除drop</span> <span class="hljs-string">table操作处，表空不能自已回收）</span><br><span class="hljs-attr">缺点：</span><br><span class="hljs-attr">1.单表增加过大，如超过100G</span><br><span class="hljs-attr">结论：</span><br><span class="hljs-attr">共享表空间在Insert操作上少有优势。其它都没独立表空间表现好。当启用独立表空间时，请合理调整：innodb_open_files</span><br><br><span class="hljs-attr">innodb_status_file</span> = <span class="hljs-string">1 </span><br><span class="hljs-comment">#启用InnoDB的status file，便于管理员查看以及监控等</span><br><br><span class="hljs-attr">innodb_open_files</span> = <span class="hljs-string">2048 </span><br><span class="hljs-comment"># 限制Innodb能打开的表的数据，如果库里的表特别多的情况，请增加这个。这个值默认是300</span><br><br><span class="hljs-attr">innodb_additional_mem_pool_size</span> = <span class="hljs-string">100M </span><br><span class="hljs-comment">#设置InnoDB存储引擎用来存放数据字典信息以及一些内部数据结构的内存空间大小，所以当我们一个MySQL Instance中的数据库对象非常多的时候，是需要适当调整该参数的大小以确保所有数据都能存放在内存中提高访问效率的。 </span><br><br><span class="hljs-attr">innodb_buffer_pool_size</span> = <span class="hljs-string">2G </span><br><span class="hljs-comment">#包括数据页、索引页、插入缓存、锁信息、自适应哈希所以、数据字典信息.InnoDB 使用一个缓冲池来保存索引和原始数据, 不像 MyISAM.这里你设置越大,你在存取表里面数据时所需要的磁盘 I/O 越少.在一个独立使用的数据库服务器上,你可以设置这个变量到服务器物理内存大小的 80%,不要设置过大,否则,由于物理内存的竞争可能导致操作系统的换页颠簸.注意在 32 位系统上你每个进程可能被限制在 2-3.5G 用户层面内存限制,所以不要设置的太高.</span><br><br><span class="hljs-attr">innodb_write_io_threads</span> = <span class="hljs-string">4</span><br><span class="hljs-attr">innodb_read_io_threads</span> = <span class="hljs-string">4</span><br><span class="hljs-comment"># innodb使用后台线程处理数据页上的读写 I/O(输入输出)请求,根据你的 CPU 核数来更改,默认是4</span><br><span class="hljs-comment"># 注:这两个参数不支持动态改变,需要把该参数加入到my.cnf里，修改完后重启MySQL服务,允许值的范围从 1-64</span><br><br><span class="hljs-attr">innodb_data_home_dir</span> =  <span class="hljs-string">/usr/local/mysql/var/ </span><br><span class="hljs-comment">#设置此选项如果你希望 InnoDB 表空间文件被保存在其他分区.默认保存在 MySQL 的 datadir 中.</span><br><br><span class="hljs-attr">innodb_data_file_path</span> = <span class="hljs-string">ibdata1:500M;ibdata2:2210M:autoextend</span><br><span class="hljs-comment">#InnoDB将数据保存在一个或者多个数据文件中成为表空间.如果你只有单个逻辑驱动保存你的数据,一个单个的自增文件就足够好了.其他情况下.每个设备一个文件一般都是个好的选择.你也可以配置 InnoDB 来使用裸盘分区 – 请参考手册来获取更多相关内容</span><br><br><span class="hljs-attr">innodb_file_io_threads</span> = <span class="hljs-string">4 </span><br><span class="hljs-comment">#用来同步 IO 操作的 IO 线程的数量. 此值在 Unix 下被硬编码为 4,但是在 Windows 磁盘 I/O 可能在一个大数值下表现的更好.</span><br><br><span class="hljs-attr">innodb_thread_concurrency</span> = <span class="hljs-string">16</span><br><span class="hljs-comment">#在 InnoDb 核心内的允许线程数量,InnoDB 试着在 InnoDB 内保持操作系统线程的数量少于或等于这个参数给出的限制,最优值依赖于应用程序,硬件以及操作系统的调度方式.过高的值可能导致线程的互斥颠簸.默认设置为 0,表示不限制并发数，这里推荐设置为0，更好去发挥CPU多核处理能力，提高并发量</span><br><br><span class="hljs-attr">innodb_flush_log_at_trx_commit</span> = <span class="hljs-string">1 </span><br><span class="hljs-comment">#如果设置为 1 ,InnoDB 会在每次提交后刷新(fsync)事务日志到磁盘上,这提供了完整的 ACID 行为.如果你愿意对事务安全折衷, 并且你正在运行一个小的食物, 你可以设置此值到 0 或者 2 来减少由事务日志引起的磁盘 I/O</span><br><span class="hljs-attr">0</span> <span class="hljs-string">代表日志只大约每秒写入日志文件并且日志文件刷新到磁盘.</span><br><span class="hljs-attr">2</span> <span class="hljs-string">代表日志写入日志文件在每次提交后,但是日志文件只有大约每秒才会刷新到磁盘上.</span><br><br><span class="hljs-attr">innodb_log_buffer_size</span> = <span class="hljs-string">8M </span><br><span class="hljs-comment">#用来缓冲日志数据的缓冲区的大小.当此值快满时, InnoDB 将必须刷新数据到磁盘上.由于基本上每秒都会刷新一次,所以没有必要将此值设置的太大(甚至对于长事务而言)</span><br><br><span class="hljs-attr">innodb_log_file_size</span> = <span class="hljs-string">500M </span><br><span class="hljs-comment">#事物日志大小.在日志组中每个日志文件的大小，你应该设置日志文件总合大小到你缓冲池大小的5%~100%，来避免在日志文件覆写上不必要的缓冲池刷新行为.不论如何, 请注意一个大的日志文件大小会增加恢复进程所需要的时间.</span><br><br><span class="hljs-attr">innodb_log_files_in_group</span> = <span class="hljs-string">2 </span><br><span class="hljs-comment">#在日志组中的文件总数.通常来说 2~3 是比较好的.</span><br><br><span class="hljs-attr">innodb_log_group_home_dir</span> =  <span class="hljs-string">/usr/local/mysql/var/</span><br><span class="hljs-comment"># InnoDB 的日志文件所在位置. 默认是 MySQL 的 datadir.你可以将其指定到一个独立的硬盘上或者一个 RAID1 卷上来提高其性能innodb_max_dirty_pages_pct = 90 #innodb 主线程刷新缓存池中的数据，使脏数据比例小于 90%,这是一个软限制,不被保证绝对执行.</span><br><br><span class="hljs-attr">innodb_lock_wait_timeout</span> = <span class="hljs-string">50 </span><br><span class="hljs-comment">#InnoDB 事务在被回滚之前可以等待一个锁定的超时秒数。InnoDB 在它自己的 锁定表中自动检测事务死锁并且回滚事务。 InnoDB 用 LOCK TABLES 语句注意到锁定设置。默认值是 50 秒</span><br><br><span class="hljs-attr">innodb_flush_method</span> = <span class="hljs-string">O_DSYNC </span><br><span class="hljs-comment"># InnoDB 用来刷新日志的方法.表空间总是使用双重写入刷新方法.默认值是 “fdatasync”, 另一个是 “O_DSYNC”.</span><br><br><span class="hljs-attr">innodb_force_recovery</span>=<span class="hljs-string">1</span><br><span class="hljs-comment"># 如果你发现 InnoDB 表空间损坏, 设置此值为一个非零值可能帮助你导出你的表.从1 开始并且增加此值知道你能够成功的导出表.</span><br><br><span class="hljs-attr">innodb_fast_shutdown</span> <span class="hljs-string"></span><br><span class="hljs-comment"># 加速 InnoDB 的关闭. 这会阻止 InnoDB 在关闭时做全清除以及插入缓冲合并.这可能极大增加关机时间, 但是取而代之的是 InnoDB 可能在下次启动时做这些操作.</span><br><span class="hljs-comment"></span><br><span class="hljs-comment"># *** 其他 相关选项 ***#</span><br><span class="hljs-attr">[mysqldump]</span><br><span class="hljs-attr">quick</span> <span class="hljs-string"></span><br><span class="hljs-comment">#支持较大数据库的转储，在导出非常巨大的表时需要此项。增加该变量的值十分安全，这是因为仅当需要时才会分配额外内存。例如，仅当你发出长查询或mysqld必须返回大的结果行时mysqld才会分配更多内存。该变量之所以取较小默认值是一种预防措施，以捕获客户端和服务器之间的错误信息包，并确保不会因偶然使用大的信息包而导致内存溢出。 如果你正是用大的BLOB值，而且未为mysqld授予为处理查询而访问足够内存的权限，也会遇到与大信息包有关的奇怪问题。如果怀疑出现了该情况，请尝试在mysqld_safe脚本开始增加ulimit -d 256000，并重启mysqld。</span><br><br><span class="hljs-attr">[mysql]</span><br><span class="hljs-attr">auto-rehash</span> <span class="hljs-string"></span><br><span class="hljs-comment">#允许通过 TAB 键提示</span><br><br><span class="hljs-attr">default-character-set</span> = <span class="hljs-string">utf8 </span><br><span class="hljs-comment">#数据库字符集</span><br><br><span class="hljs-attr">connect-timeout</span> = <span class="hljs-string">3</span><br><span class="hljs-attr">[mysqld_safe]</span><br><br><span class="hljs-attr">open-files-limit</span> = <span class="hljs-string">8192 </span><br><span class="hljs-comment">#增加每个进程的可打开文件数量.确认你已经将全系统限制设定的足够高!打开大量表需要将此值设大</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="21-RabbitMQ"><a href="#21-RabbitMQ" class="headerlink" title="21. RabbitMQ"></a>21. RabbitMQ</h1><h2 id="21-1-前置条件"><a href="#21-1-前置条件" class="headerlink" title="21.1 前置条件"></a>21.1 前置条件</h2><ol>
+<li>需要系统中存在 Erlang 的环境。</li>
+<li>如果使用笔记中的远程在线方式下载，则还需要系统中存在 wget组件来用于远程http下载。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 更新系统依赖组件库</span><br>yum update -y<br><br><span class="hljs-comment"># 安装 wget 组件</span><br>yum install wget -y<br><span class="hljs-comment"># 1. 下载Erlang[RPM]安装文件</span><br>wget --content-disposition https://packagecloud.io/rabbitmq/erlang/packages/el/7/erlang-23.3.4.11-1.el7.x86_64.rpm/download.rpm<br><br><span class="hljs-comment"># 2. 安装rpm包文件</span><br>rpm -ivh erlang-23.3.4.11-1.el7.x86_64.rpm<br></code></pre></td></tr></table></figure>
+
+<h2 id="21-2-RPM方式安装"><a href="#21-2-RPM方式安装" class="headerlink" title="21.2 RPM方式安装"></a>21.2 RPM方式安装</h2><ol>
+<li>从RabbitMQ官方网站下载 rpm安装包管理文件；</li>
+</ol>
+<p>wget <a target="_blank" rel="noopener" href="https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.10.0-rc.6/rabbitmq-server-3.10.0.rc.6-1.el7.noarch.rpm">https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.10.0-rc.6/rabbitmq-server-3.10.0.rc.6-1.el7.noarch.rpm</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash">rpm -ivh rabbitmq-server-3.10.0.rc.6-1.el7.noarch.rpm<br>1. 启动服务<br>    systemctl start rabbitmq-server<br>2. 停止服务<br>    systemctl stop rabbitmq-server<br>3. 重启服务<br>    systemctl restart rabbitmq-server<br>4. 加入开机自启<br>    systemctl <span class="hljs-built_in">enable</span> rabbitmq-server<br>5. 移除开机自启<br>    systemctl <span class="hljs-built_in">disable</span> rabbitmq-server<br></code></pre></td></tr></table></figure>
+
+<h2 id="21-3-二进制编译方式安装"><a href="#21-3-二进制编译方式安装" class="headerlink" title="21.3 二进制编译方式安装"></a>21.3 二进制编译方式安装</h2><p>二进制源文件手动编译安装，需要系统有gcc编译环境</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash">1. 下载二进制源文件<br>  wget https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.10.1/rabbitmq-server-generic-unix-3.10.1.tar.xz<br>2. 解压文件<br>  tar vf rabbitmq-server-generic-unix-3.10.1.tar.xz<br>3. 进入到文件<br>  <span class="hljs-built_in">cd</span> rabbitmq-server-generic-unix-3.10.1<br>4. 创建保存文件文件目录<br>  <span class="hljs-built_in">mkdir</span> -p /usr/local/rabbitmq<br>5. 编译<br>  ./configura --perfix=/usr/local/rabbitmq<br>  make &amp;&amp; make install<br>6. 使用 <span class="hljs-built_in">ln</span> -s [源文件绝对地址] /usr/bin/[文件名] 创建文件的软链接<br></code></pre></td></tr></table></figure>
+
+<h2 id="21-4-Docker镜像方式安装"><a href="#21-4-Docker镜像方式安装" class="headerlink" title="21.4 Docker镜像方式安装"></a>21.4 Docker镜像方式安装</h2><p>使用Docker镜像方式部署安装，需要系统中存在Docker环境，并且能够正常运行。</p>
+<p>因为在Docker方式部署时，笔记中采用联网方式远程下载包安装使用，所以在部署过程中请保证网络通畅。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 从Docker镜像远程仓库拉取RabbitMQ的镜像文件</span><br>docker pull rabbitmq:3.10-management<br><br><span class="hljs-comment"># 配置启动</span><br>docker run -it --<span class="hljs-built_in">rm</span> --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.10-management<br>1. 使用Docker容器时，请务必保证Docker服务正常启动并运行正常；<br>2. 保证操作资源的服务器系统网络正常；<br>3. 如若使用上述指令的默认端口映射参数，则需要确定且保证对应服务的端口为被占用，否则容器将启动失败；<br>    5672：mq服务端口号映射<br>    15672：mq服务web管理界面服务端口好映射<br>4. 如果要配置在docker服务启动后，让此mq容器自动跟随docker服务的启动而启动。<br>    4.1 如果此时的容器已存在，则修改指定容器的参数：<br>       docker update [容器名] --restart=always<br>    4.2 如果此时的容器还未创建，则在启动指令后添加：<br>       --restart=always<br>5. web页面默认账号密码都是：guest，并且账户支持远程ip地址访问登陆。<br>6. 如若mq是采用rpm包或者二进制源码编译安装，则默认账户guest只支持在本机下访问。在远程ip处访问，需要使用指令创建账户信息以及分配指定需要的权限信息。<br></code></pre></td></tr></table></figure>
+
+<h2 id="21-5-配置文件的简单修改"><a href="#21-5-配置文件的简单修改" class="headerlink" title="21.5 配置文件的简单修改"></a>21.5 配置文件的简单修改</h2><p>如若使用的是Docker部署安装的方式，则需要将在主机上修改后的配置文件内容通过docker的文件映射功能，映射到容器服务中，才能被容器中的服务读取生效。</p>
+<h2 id="21-5-指令创建新用户以及权限分配"><a href="#21-5-指令创建新用户以及权限分配" class="headerlink" title="21.5 指令创建新用户以及权限分配"></a>21.5 指令创建新用户以及权限分配</h2>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AC%94%E8%AE%B0/" class="category-chain-item">笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Linux/">#Linux</a>
+      
+        <a href="/tags/%E7%AC%94%E8%AE%B0/">#笔记</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>关于CentOS 7.6 的一些操作（持续不定时更新中）</div>
+      <div>https://saotolls.github.io/2023/03/22/关于CentOS-7-6-的一些操作/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>saotolls.china</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年3月22日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="NC - 非商业性使用">
+                    <i class="iconfont icon-nc"></i>
+                  </span>
+                </a>
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="ND - 禁止演绎">
+                    <i class="iconfont icon-nd"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/03/22/Windows%E4%BD%BF%E7%94%A8ClashForWindows/" title="Windows使用ClashForWindows">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Windows使用ClashForWindows</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="#" target="_blank" rel="nofollow noopener"><span>saotolls</span></a> <i class="iconfont icon-love"></i> <a href="#" target="_blank" rel="nofollow noopener"><span>China</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
