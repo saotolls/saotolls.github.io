@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://saotolls.github.io/2023/07/01/%E5%B8%B8%E8%A7%81Docker%E6%9C%8D%E5%8A%A1%E7%9A%84%E9%83%A8%E7%BD%B2%E5%AE%89%E8%A3%85/image-20230701201243984.png">
 <meta property="article:published_time" content="2023-07-01T12:09:23.000Z">
-<meta property="article:modified_time" content="2023-07-01T12:31:13.014Z">
+<meta property="article:modified_time" content="2023-07-03T00:00:26.043Z">
 <meta property="article:author" content="saotolls.china">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="笔记">
@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.7k 字
+          3.3k 字
         
       </span>
     
@@ -234,7 +234,7 @@
         
         
         
-          15 分钟
+          28 分钟
         
       </span>
     
@@ -318,6 +318,52 @@
 
 <p>nginx默认配置文件（精简版）  <a target="_blank" rel="noopener" href="https://nginx.org/en/download.html">Nginx的版本发布页</a></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs conf">worker_processes  1;<br>events &#123;<br>    worker_connections  1024;<br>&#125;<br><br><br>http &#123;<br>    include       mime.types;<br>    default_type  application/octet-stream;<br>    sendfile        on;<br>    keepalive_timeout  65;<br><br>    server &#123;<br>        listen       80;<br>        server_name  localhost;<br><br>        location / &#123;<br>            root   html;<br>            index  index.html index.htm;<br>        &#125;<br><br>        error_page   500 502 503 504  /50x.html;<br>        location = /50x.html &#123;<br>            root   html;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="Elasticsearch-Kibana"><a href="#Elasticsearch-Kibana" class="headerlink" title="Elasticsearch + Kibana"></a>Elasticsearch + Kibana</h2><h3 id="Elasticsearch"><a href="#Elasticsearch" class="headerlink" title="Elasticsearch"></a>Elasticsearch</h3><p>1、拉取镜像</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo docker pull docker.elastic.co/elasticsearch/elasticsearch:7.7.1<br></code></pre></td></tr></table></figure>
+
+<p>2、启动容器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo docker run -d --name=es \<br>	-p 9200:9200 -p 9300:9300  \<br>	-e &quot;discovery.type=single-node&quot; \<br>	docker.elastic.co/elasticsearch/elasticsearch:7.7.1<br></code></pre></td></tr></table></figure>
+
+<p>3、进入到容器中，安装IK分词器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">进入到容器</span><br>sudo docker exec -it es /bin/bash<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">下载安装IK分词器</span><br>./bin/elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v7.7.1/elasticsearch-analysis-ik-7.7.1.zip<br></code></pre></td></tr></table></figure>
+
+<p>4、Elasticsearch跨域访问配置（容器内）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">编辑配置文件</span><br>vi config/elasticsearch.yml <br></code></pre></td></tr></table></figure>
+
+<p>配置文件修改后的内容</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">cluster.name:</span> <span class="hljs-string">&quot;docker-cluster&quot;</span><br><span class="hljs-attr">network.host:</span> <span class="hljs-number">0.0</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span><br><span class="hljs-attr">http.cors.enabled:</span> <span class="hljs-literal">true</span><br><span class="hljs-attr">http.cors.allow-origin:</span> <span class="hljs-string">&quot;*&quot;</span><br><br><span class="hljs-comment"># minimum_master_nodes need to be explicitly set when bound on a public IP</span><br><span class="hljs-comment"># set to 1 to allow single node clusters</span><br><span class="hljs-comment"># Details: https://github.com/elastic/elasticsearch/pull/17288</span><br><span class="hljs-attr">discovery.zen.minimum_master_nodes:</span> <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+<p>5、退出容器，并重启容器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">容器内执行，退出当前容器，返回到操作系统</span><br>exit<br><span class="hljs-meta prompt_"># </span><span class="language-bash">重启Elasticsearch容器</span><br>sudo docker restart es<br></code></pre></td></tr></table></figure>
+
+<p>6、浏览器访问</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs markdown">http://ip:9200<br></code></pre></td></tr></table></figure>
+
+<h3 id="Kibana"><a href="#Kibana" class="headerlink" title="Kibana"></a>Kibana</h3><p>1、拉取镜像，此处的镜像版本需要和已安装的Elasticsearch的版本一致</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo docker pull docker.elastic.co/kibana/kibana:7.7.1<br></code></pre></td></tr></table></figure>
+
+<p>2、启动容器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo docker run -it -d \<br>	-e ELASTICSEARCH_URL=http://192.168.8.20:9200  \  # 映射绑定es服务<br>	--name kibana -p 5601:5601 \<br>    docker.elastic.co/kibana/kibana:7.7.1<br></code></pre></td></tr></table></figure>
+
+<p>3、进入容器，修改kibana配置文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo docker exec -it kibana /bin/bash<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">vi config/kibana.yml<br></code></pre></td></tr></table></figure>
+
+<p>修改内容如下：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-comment">#</span><br><span class="hljs-comment"># ** THIS IS AN AUTO-GENERATED FILE **</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"></span><br><span class="hljs-comment"># Default Kibana configuration for docker target</span><br><span class="hljs-attr">server.name</span>: <span class="hljs-string">kibana</span><br><span class="hljs-attr">server.host</span>: <span class="hljs-string">&quot;0&quot;</span><br><span class="hljs-comment"># 主要修改此处的es服务请求地址</span><br><span class="hljs-attr">elasticsearch.hosts</span>: <span class="hljs-string">[ &quot;http://192.168.8.20:9200&quot; ]</span><br><span class="hljs-attr">monitoring.ui.container.elasticsearch.enabled</span>: <span class="hljs-string">true</span><br></code></pre></td></tr></table></figure>
+
+<p>4、退出容器，并重启容器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">exit<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">sudo docker restart kibana</span><br></code></pre></td></tr></table></figure>
+
+<p>5、浏览器访问</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs markdown">http://ip:5601<br></code></pre></td></tr></table></figure>
+
 
                 
               </div>
